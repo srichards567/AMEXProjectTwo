@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-//@Service
+@Service
 public interface PostService {
 
     // make a post
@@ -22,7 +22,7 @@ public interface PostService {
     public Post getPostById(Long id);
 
     // get all posts
-    public List<Post> listAllPosts();
+    public Iterable<Post> listAllPosts();
 
 
 }

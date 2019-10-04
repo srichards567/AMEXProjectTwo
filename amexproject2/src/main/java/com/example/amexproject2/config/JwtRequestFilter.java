@@ -1,4 +1,4 @@
-package com.example.amexproject2.security;
+package com.example.amexproject2.config;
 
 import java.io.IOException;
 
@@ -7,7 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.example.amexproject2.security.JwtUtil;
+import com.example.amexproject2.config.JwtUtil;
 import com.example.amexproject2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

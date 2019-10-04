@@ -48,7 +48,7 @@ public class User {
         return password;
     }
 
-    public void setPassword() {
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -56,7 +56,7 @@ public class User {
         return email;
     }
 
-    public void setEmail() {
+    public void setEmail(String email) {
         this.email = email;
     }
 }

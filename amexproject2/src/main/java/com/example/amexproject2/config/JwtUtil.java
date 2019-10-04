@@ -1,4 +1,4 @@
-package com.example.amexproject2.security;
+package com.example.amexproject2.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -12,7 +12,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
-import java.util.stream.LongStream;
 
 @Component
 public class JwtUtil implements Serializable {

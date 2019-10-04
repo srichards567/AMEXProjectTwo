@@ -1,4 +1,4 @@
-package com.example.amexproject2.security;
+package com.example.amexproject2.config;
 
 import com.example.amexproject2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +38,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/signup/**", "/login/**").permitAll()
-                .antMatchers("/role/**","/song/add/**","/user/list", "/user/{userId}").hasRole("ADMIN")
-                .antMatchers("/user/{username)/**","/song/list/**").authenticated()
+                .antMatchers("/user/**", "/profile/**", "/course/**").authenticated()
+                .antMatchers("/role/**").hasRole("DBA")
                 .and()
                 .httpBasic();
 

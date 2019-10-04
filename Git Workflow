@@ -1,0 +1,13 @@
+Step One:
+- Git status to check that you are on your branch
+- git add .
+- git commit -m "your message here"
+- git push origin yourbranch
+- inform team of changes
+- agree on merge
+- merge
+- git checkout master
+- git pull origin master
+- git checkout yourbranch
+- git merge master
+- *ADD AND COMMIT OFTEN*

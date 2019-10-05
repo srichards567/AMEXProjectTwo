@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerator;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
@@ -26,6 +28,32 @@ public class User {
 
     @Column(unique = true)
     public String email;
+
+    // creates a users_posts
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {CascadeType.DETACH,
+                    CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinTable(name = "user_posts",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = @JoinColumn(name = "post_id"))
+    private List<Post> posts;
+
+    public List<Post> addUserPost (Post newPost){
+        if(posts == null)
+            posts = new ArrayList<>();
+        posts.add(newPost);
+
+        return posts;
+    }
+
+    public List<Post> deleteUserPost (Post post) {
+        try {
+            posts.remove(post);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return posts;
+    }
 
     public User() {}
     public Long getId() {

@@ -16,10 +16,10 @@ public interface PostService {
     public Post createPost(Post newPost);
 
     // delete post
-    public HttpStatus deletePost(Long id);
+    public HttpStatus deleteById(Long postId);
 
     // get specific post
-    public Post getPostById(Long id);
+    public Post getPostById(Long postId);
 
     // get all posts
     public Iterable<Post> listAllPosts();

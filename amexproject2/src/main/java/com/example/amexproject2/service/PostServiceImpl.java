@@ -1,28 +1,41 @@
 package com.example.amexproject2.service;
 
 import com.example.amexproject2.model.Post;
+import com.example.amexproject2.repository.PostRepository;
+import com.example.amexproject2.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PostServiceImpl implements PostService {
+
+    @Autowired
+    PostRepository postRepository;
+
+    @Autowired
+    UserRepository userRepository;
+
     @Override
     public Post createPost(Post newPost) {
-        return null;
+        return postRepository.save(newPost);
     }
 
     @Override
-    public HttpStatus deletePost(Long id) {
-        return null;
+    public HttpStatus deleteById(Long postId){
+        userRepository.deleteById(postId);
+        return HttpStatus.OK;
     }
 
-    @Override
-    public Post getPostById(Long id) {
+
+    // get specific post
+    public Post getPostById(Long postId){
         return null;
     }
 
     @Override
     public Iterable<Post> listAllPosts() {
-        return null;
+        return postRepository.findAll();
     }
+
 }

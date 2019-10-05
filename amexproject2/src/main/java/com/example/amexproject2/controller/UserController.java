@@ -25,11 +25,11 @@ public class UserController {
     public ResponseEntity<?> createUser(@RequestBody User newUser) {
         return ResponseEntity.ok(new JwtResponse(userService.createUser(newUser)));
     }
-//
-//    @PostMapping("/login")
-//    public ResponseEntity<?> login(@RequestBody User user) {
-//        return ResponseEntity.ok(new JwtResponse(userService.login(user)));
-//    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody User user) {
+        return ResponseEntity.ok(new JwtResponse(userService.login(user)));
+    }
 //
 //    @GetMapping("/user/list/posts")
 //    public Iterable<User> listPosts() {

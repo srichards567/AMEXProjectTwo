@@ -1,6 +1,8 @@
 package com.example.amexproject2.repository;
 
 import com.example.amexproject2.model.Post;
+import com.example.amexproject2.model.User;
+import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

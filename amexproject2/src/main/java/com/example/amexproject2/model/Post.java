@@ -1,14 +1,31 @@
 package com.example.amexproject2.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+import javax.persistence.*;
+import java.util.List;
+
 // what does a post have? id, title, body
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
+@Entity
+@Table(name = "posts")
 public class Post {
 
+    @Id
+    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
+    @Column
     public String title;
 
+    @Column
     public String body;
 
+    public Post() {}
     // getters and setters
 
     public Long getId() {

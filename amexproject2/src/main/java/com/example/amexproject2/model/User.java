@@ -30,13 +30,14 @@ public class User {
     public String email;
 
     // creates a users_posts
-    @ManyToMany(fetch = FetchType.LAZY,
+    @OneToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.DETACH,
                     CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(name = "user_posts",
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = @JoinColumn(name = "post_id"))
     private List<Post> posts;
+
 
     public List<Post> addUserPost (Post newPost){
         if(posts == null)
@@ -56,6 +57,7 @@ public class User {
     }
 
     public User() {}
+
     public Long getId() {
         return id;
     }

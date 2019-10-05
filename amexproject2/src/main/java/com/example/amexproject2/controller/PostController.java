@@ -21,14 +21,14 @@ public class PostController {
     }
 
     // delete a post
-    @DeleteMapping("/post/{id}")
+    @DeleteMapping("/post/{postId}")
     public HttpStatus deletePost(@PathVariable Long postId) {
         return postService.deleteById(postId);
     }
 
     // get a specific post
-    @GetMapping("/post/{id}")
-    public Post getPostByTitle (@PathVariable Long postId) {
+    @GetMapping("/post/{postId}")
+    public Post getPostById (@PathVariable Long postId) {
         return postService.getPostById(postId);
     }
 

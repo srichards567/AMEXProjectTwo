@@ -20,6 +20,7 @@ public interface PostService {
 
     // get specific post
     public Post getPostById(Long postId);
+      //  public Post getPostByPostTitle(String postTitle);
 
     // get all posts
     public Iterable<Post> listAllPosts();

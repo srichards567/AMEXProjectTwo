@@ -30,9 +30,7 @@ public class User {
     public String email;
 
     // creates a users_posts
-    @OneToMany(fetch = FetchType.LAZY,
-            cascade = {CascadeType.DETACH,
-                    CascadeType.MERGE, CascadeType.REFRESH})
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "user_posts",
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = @JoinColumn(name = "post_id"))

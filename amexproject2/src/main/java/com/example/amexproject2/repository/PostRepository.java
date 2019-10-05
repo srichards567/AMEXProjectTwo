@@ -7,5 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PostRepository extends CrudRepository<Post, Integer> {
+public interface PostRepository extends CrudRepository<Post, Long> {
+//    @Query("FROM Post u WHERE u.title = ?1")
+//    public Post findPostByPostTitle(String title);
 }

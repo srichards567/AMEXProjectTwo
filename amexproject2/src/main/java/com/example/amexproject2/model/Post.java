@@ -25,6 +25,12 @@ public class Post {
     @Column
     public String body;
 
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name = "user_posts",
+            joinColumns = {@JoinColumn(name = "post_id")},
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private List<User> users;
+
     public Post() {}
     // getters and setters
 

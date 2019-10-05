@@ -29,8 +29,12 @@ public class PostServiceImpl implements PostService {
 
 
     // get specific post
-    public Post getPostById(Long postId){
-        return null;
+//    public Post getPostByPostTitle(String title){
+//        return postRepository.findPostByPostTitle(title);
+//    }
+
+    public Post getPostById(Long postId) {
+        return postRepository.findById(postId).get();
     }
 
     @Override

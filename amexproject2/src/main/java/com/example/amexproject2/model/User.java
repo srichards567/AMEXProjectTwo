@@ -29,6 +29,9 @@ public class User {
     @Column(unique = true)
     public String email;
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private UserProfile userProfile;
+
     // creates a users_posts
     @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "user_posts",

@@ -18,10 +18,6 @@ public class UserProfile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @OneToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "profile_id", nullable = false, unique = true)
-//    private User user;
-
     @Column
     public String mobile;
 
@@ -40,11 +36,6 @@ public class UserProfile {
     public User user;
 
 
-
-//    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL,
-//            fetch = FetchType.LAZY, optional = false)
-//    private User user;
-
     public UserProfile(){}
 
     // getters and setters
@@ -57,14 +48,6 @@ public class UserProfile {
         this.id = id;
     }
 
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
-//
-//    public User getUser() {
-//        return user;
-//    }
-
     public void setMobile(String mobile) {
         this.mobile = mobile;
     }
@@ -72,7 +55,6 @@ public class UserProfile {
     public String getMobile() {
         return mobile;
     }
-
 
     public void setAddress(String address) {
         this.address = address;
@@ -90,11 +72,9 @@ public class UserProfile {
         this.altEmail = altEmail;
     }
 
-    //getter method to retrieve the UserId
     public Long getUserId(){
         return user.getId();
     }
-
 
     @JsonIgnore
     public User getUser() {

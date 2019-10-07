@@ -11,4 +11,7 @@ public interface CommentService {
     public HttpStatus deleteComment(Long id);
 
     public Iterable<Comment> listAllComments();
-}
+
+    public Iterable<Comment> listAllUsersComments(Long userId);
+
+    }

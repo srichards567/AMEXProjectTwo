@@ -35,12 +35,12 @@ public class UserController {
         return ResponseEntity.ok(new JwtResponse(userService.login(user)));
     }
 
-    @GetMapping("/profile/{username}")
+    @GetMapping("user/profile/{username}")
     public UserProfile viewUserProfile(@PathVariable String username) {
         return userProfileService.getUserProfile(username);
     }
 
-    @PostMapping("/profile/{username}")
+    @PostMapping("user/profile/{username}")
     public UserProfile createUserProfile(@PathVariable String username, @RequestBody UserProfile newUserProfile) {
         return userProfileService.createUserProfile(username, newUserProfile);
     }
@@ -52,9 +52,5 @@ public class UserController {
 //        return userService.listPosts();
 //    }
 //
-//    @GetMapping("/user/list/comments")
-//    public Iterable<User> listComments() {
-//        return userService.listComments();
-//    }
 
 }

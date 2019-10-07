@@ -24,4 +24,6 @@ public interface PostService {
 
     // get all posts
     public Iterable<Post> listAllPosts();
+
+    public Iterable<Post> listUsersPosts(Long userId);
 }

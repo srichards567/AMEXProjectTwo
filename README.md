@@ -1,8 +1,8 @@
 # AMEXProjectTwo
 
 # Team Members
-Christine Le(<a href="https://github.com/le-christine">@le-christine</a>)<br/>
-Samantha Richards(<a href="https://github.com/srichards567">@srichards567</a>)
+Christine Le (<a href="https://github.com/le-christine">@le-christine</a>)<br/>
+Samantha Richards (<a href="https://github.com/srichards567">@srichards567</a>)
 
 # Technologies Used
 - PostgreSQL
@@ -16,7 +16,7 @@ Samantha Richards(<a href="https://github.com/srichards567">@srichards567</a>)
 # Unsolved Problems
 
 # Planning
-<img src = "images/erd-v2.jpg" width="500"/><br/>
+<img src = "images/erd-v3.jpg" width="500"/><br/>
 Six models are persisted to a PostgreSQL database.<br/>
 The `user` model has the fields: id, username, password, email, and user_profile_id.<br/>
 The `user_profile` model has the fields: id, mobile, address, and altEmail. <br/>

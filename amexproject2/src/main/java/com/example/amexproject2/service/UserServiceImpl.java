@@ -2,6 +2,7 @@ package com.example.amexproject2.service;
 
 import com.example.amexproject2.config.JwtUtil;
 import com.example.amexproject2.model.User;
+import com.example.amexproject2.model.UserProfile;
 import com.example.amexproject2.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -85,4 +86,7 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
+    public UserProfile createUserProfile(UserProfile newUserProfile) {
+        return null;
+    }
 }

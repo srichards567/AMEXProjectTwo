@@ -13,7 +13,7 @@ import java.util.List;
 public interface PostService {
 
     // make a post
-    public Post createPost(Post newPost);
+    public Post createPost(String username, Post newPost);
 
     // delete post
     public HttpStatus deleteById(Long postId);

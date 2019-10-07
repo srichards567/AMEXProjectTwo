@@ -1,11 +1,14 @@
 package com.example.amexproject2.service;
 
 import com.example.amexproject2.model.Post;
+import com.example.amexproject2.model.User;
 import com.example.amexproject2.repository.PostRepository;
 import com.example.amexproject2.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -17,13 +20,20 @@ public class PostServiceImpl implements PostService {
     UserRepository userRepository;
 
     @Override
-    public Post createPost(Post newPost) {
+    public Post createPost(String username,
+                           Post newPost) {
+        User userWhoPosts = userRepository.findByUsername(username);
+        //userWhoPosts.addUserPost(newPost);
+        newPost.setUser(userWhoPosts);
         return postRepository.save(newPost);
     }
 
     @Override
     public HttpStatus deleteById(Long postId){
-        userRepository.deleteById(postId);
+//        Optional<Post> postToDelete = postRepository.findById(postId);
+//        postRepository.delete(postToDelete);
+
+        postRepository.deleteById(postId);
         return HttpStatus.OK;
     }
 

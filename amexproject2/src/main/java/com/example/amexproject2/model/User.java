@@ -1,6 +1,7 @@
 package com.example.amexproject2.model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
@@ -41,37 +42,48 @@ public class User {
     public String email;
 
 
+//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private List<Post> posts;
+//
+//    public Post getPost() {
+//        return post;
+//    }
+//
+//    public void setPost(Post post) {
+//        this.post = post;
+//    }
+
+    // creates a users_posts
+//    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+//    @JoinTable(name = "user_posts",
+//            joinColumns = {@JoinColumn(name = "user_id")},
+//            inverseJoinColumns = @JoinColumn(name = "post_id"))
+//    private List<Post> posts;
+//
+//
+//    public List<Post> addUserPost (Post newPost){
+//        if(posts == null)
+//            posts = new ArrayList<>();
+//        posts.add(newPost);
+//
+//        return posts;
+//    }
+//
+//    public List<Post> deleteUserPost (Post post) {
+//        try {
+//            posts.remove(post);
+//        } catch (Exception e) {
+//            System.out.println(e.getMessage());
+//        }
+//        return posts;
+//    }
+
+    public User() {}
+
     @OneToOne(cascade =
             CascadeType.ALL)
     @JoinColumn(name="profile_id")
     private UserProfile userProfile;
-
-    // creates a users_posts
-    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable(name = "user_posts",
-            joinColumns = {@JoinColumn(name = "user_id")},
-            inverseJoinColumns = @JoinColumn(name = "post_id"))
-    private List<Post> posts;
-
-
-    public List<Post> addUserPost (Post newPost){
-        if(posts == null)
-            posts = new ArrayList<>();
-        posts.add(newPost);
-
-        return posts;
-    }
-
-    public List<Post> deleteUserPost (Post post) {
-        try {
-            posts.remove(post);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        return posts;
-    }
-
-    public User() {}
 
     public Long getId() {
         return id;

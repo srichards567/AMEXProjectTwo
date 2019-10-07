@@ -15,13 +15,13 @@ public class PostController {
     PostService postService;
 
     // create a post
-    @PostMapping("/post")
-    public Post createPost(@RequestBody Post newPost) {
-        return postService.createPost(newPost);
+    @PostMapping("/post/{username}")
+    public Post createPost(@PathVariable String username, @RequestBody Post newPost) {
+        return postService.createPost(username, newPost);
     }
 
     // delete a post
-    @DeleteMapping("/post/{postId}")
+    @DeleteMapping("post/{postId}")
     public HttpStatus deletePost(@PathVariable Long postId) {
         return postService.deleteById(postId);
     }

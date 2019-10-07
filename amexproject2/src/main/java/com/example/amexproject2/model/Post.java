@@ -1,6 +1,8 @@
 package com.example.amexproject2.model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
@@ -25,14 +27,27 @@ public class Post {
     @Column
     public String body;
 
-    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable(name = "user_posts",
-            joinColumns = {@JoinColumn(name = "post_id")},
-            inverseJoinColumns = @JoinColumn(name = "user_id"))
-    private List<User> users;
 
+    @ManyToOne(cascade={CascadeType.DETACH, CascadeType.MERGE,
+                CascadeType.REFRESH})
+    @JoinColumn(name="user_id")
+    private User user;
+
+//    @JoinTable(name = "user_posts",
+//            joinColumns = {@JoinColumn(name = "post_id")},
+//            inverseJoinColumns = @JoinColumn(name = "user_id"))
+//    private List<User> users;
+
+//    @OneToOne(mapepdBy = "")
     public Post() {}
     // getters and setters
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
 
     public Long getId() {
         return id;

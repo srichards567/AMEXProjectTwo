@@ -12,25 +12,18 @@ public class Comment {
     @Column
     public String body;
 
-    @Column
-    public String userId;
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    @Column
-    public String postId;
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "post_id")
+    private Post post;
 
-
-    @OneToOne(mappedBy = "Comment",
-            cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    public Post post;
-
-    @OneToOne(mappedBy = "User",
-            cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    public User user;
 
     public User getUser() {
         return user;
     }
-
     public void setUser(User user) {
         this.user = user;
     }
@@ -42,12 +35,6 @@ public class Comment {
     public void setPost(Post post) {
         this.post = post;
     }
-
-    //    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    @JoinTable(name = "user_comment",
-//            joinColumns = {@JoinColumn(name = "comment_id")},
-//            inverseJoinColumns = {@JoinColumn(name = "postId")},
-//            joinColumns = {@JoinColumn(name = "user_id")})
 
     public Long getId() {
         return id;

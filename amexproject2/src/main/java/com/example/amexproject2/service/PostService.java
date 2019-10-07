@@ -24,6 +24,4 @@ public interface PostService {
 
     // get all posts
     public Iterable<Post> listAllPosts();
-
-
 }

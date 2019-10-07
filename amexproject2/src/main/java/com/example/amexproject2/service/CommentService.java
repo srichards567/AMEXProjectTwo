@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface CommentService {
-    public Comment createComment(Comment newComment);
+    public Comment createComment(String username, Long postId, Comment newComment);
 
     public HttpStatus deleteComment(Long id);
 

@@ -1,6 +1,7 @@
 package com.example.amexproject2.service;
 
 import com.example.amexproject2.model.User;
+import com.example.amexproject2.model.UserProfile;
 import org.hibernate.dialect.PostgreSQL9Dialect;
 
 import javax.xml.stream.events.Comment;
@@ -22,4 +23,6 @@ public interface UserService extends UserDetailsService {
     public Iterable<Comment> listComments();
 
 //    public Profile getProfile();
+
+    public UserProfile createUserProfile(UserProfile newUserProfile);
 }

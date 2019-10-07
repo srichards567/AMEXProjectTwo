@@ -1,7 +1,6 @@
 package com.example.amexproject2.model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerator;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
@@ -11,6 +10,7 @@ import java.util.List;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -20,7 +20,18 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
-    @Column
+//    @Id
+//    @Column(name = "user_id")
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    public Long id;
+//
+//    @OneToOne(
+//            cascade = {CascadeType.ALL},
+//            fetch = FetchType.LAZY,
+//            mappedBy = "user_profile")  //Refers to parent field of the Child class
+//    private UserProfile userProfile;
+
+    @Column(unique=true)
     public String username;
 
     @Column
@@ -29,7 +40,10 @@ public class User {
     @Column(unique = true)
     public String email;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+
+    @OneToOne(cascade =
+            CascadeType.ALL)
+    @JoinColumn(name="profile_id")
     private UserProfile userProfile;
 
     // creates a users_posts
@@ -90,4 +104,17 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+//    public void setUserProfileId(Long id) {
+//        this.userProfile.setId(id);
+//    }
+
+    public void setUserProfile(UserProfile userProfile) {
+        this.userProfile = userProfile;
+    }
+
+    public UserProfile getUserProfile() {
+        return userProfile;
+    }
 }
+

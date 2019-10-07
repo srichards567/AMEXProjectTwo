@@ -1,24 +1,26 @@
 package com.example.amexproject2.model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerator;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import sun.jvm.hotspot.memory.Generation;
 
 import javax.persistence.*;
 import java.util.List;
-
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
-
 
 @Entity
 @Table(name="user_profile")
 public class UserProfile {
 
     @Id
-    @Column(name = "id")
-    public Long id;
+    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "profile_id", nullable = false, unique = true)
+//    private User user;
 
     @Column
     public String mobile;
@@ -29,21 +31,39 @@ public class UserProfile {
     @Column
     public String altEmail;
 
-    @OneToOne
-    @MapsId
-    private User user;
+    @JsonIgnore
+    @OneToOne(mappedBy = "userProfile",
+    cascade = {CascadeType.DETACH,
+    CascadeType.MERGE, CascadeType.MERGE,
+    CascadeType.PERSIST,
+    CascadeType.REFRESH})
+    public User user;
 
-    public UserProfile() {}
+
+
+//    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL,
+//            fetch = FetchType.LAZY, optional = false)
+//    private User user;
+
+    public UserProfile(){}
 
     // getters and setters
 
-    public void setId (Long id) {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Long getId () {
-        return id;
-    }
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
+//
+//    public User getUser() {
+//        return user;
+//    }
 
     public void setMobile(String mobile) {
         this.mobile = mobile;
@@ -68,5 +88,21 @@ public class UserProfile {
 
     public void setAltEmail(String altEmail) {
         this.altEmail = altEmail;
+    }
+
+    //getter method to retrieve the UserId
+    public Long getUserId(){
+        return user.getId();
+    }
+
+
+    @JsonIgnore
+    public User getUser() {
+        return user;
+    }
+
+    @JsonIgnore
+    public void setUser(User user) {
+        this.user = user;
     }
 }

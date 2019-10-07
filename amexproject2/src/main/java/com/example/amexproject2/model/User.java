@@ -21,17 +21,6 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
-//    @Id
-//    @Column(name = "user_id")
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    public Long id;
-//
-//    @OneToOne(
-//            cascade = {CascadeType.ALL},
-//            fetch = FetchType.LAZY,
-//            mappedBy = "user_profile")  //Refers to parent field of the Child class
-//    private UserProfile userProfile;
-
     @Column(unique=true)
     public String username;
 
@@ -40,43 +29,6 @@ public class User {
 
     @Column(unique = true)
     public String email;
-
-
-//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private List<Post> posts;
-//
-//    public Post getPost() {
-//        return post;
-//    }
-//
-//    public void setPost(Post post) {
-//        this.post = post;
-//    }
-
-    // creates a users_posts
-//    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-//    @JoinTable(name = "user_posts",
-//            joinColumns = {@JoinColumn(name = "user_id")},
-//            inverseJoinColumns = @JoinColumn(name = "post_id"))
-//    private List<Post> posts;
-//
-//
-//    public List<Post> addUserPost (Post newPost){
-//        if(posts == null)
-//            posts = new ArrayList<>();
-//        posts.add(newPost);
-//
-//        return posts;
-//    }
-//
-//    public List<Post> deleteUserPost (Post post) {
-//        try {
-//            posts.remove(post);
-//        } catch (Exception e) {
-//            System.out.println(e.getMessage());
-//        }
-//        return posts;
-//    }
 
     public User() {}
 
@@ -116,10 +68,6 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-
-//    public void setUserProfileId(Long id) {
-//        this.userProfile.setId(id);
-//    }
 
     public void setUserProfile(UserProfile userProfile) {
         this.userProfile = userProfile;

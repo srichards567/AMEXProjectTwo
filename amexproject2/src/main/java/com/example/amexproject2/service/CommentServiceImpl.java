@@ -39,4 +39,9 @@ public class CommentServiceImpl implements CommentService {
     public Iterable<Comment> listAllComments() {
         return commentRepository.findAll();
     }
+
+    @Override
+    public Iterable<Comment> listAllUsersComments(Long userId) {
+       return commentRepository.findByUserId(userId);
+    }
 }

@@ -10,4 +10,7 @@ import org.springframework.stereotype.Repository;
 public interface PostRepository extends CrudRepository<Post, Long> {
 //    @Query("FROM Post u WHERE u.title = ?1")
 //    public Post findPostByPostTitle(String title);
+
+    @Query("FROM Post p WHERE p.user_id = ?1")
+    public Iterable<Post> findByUserId(Long userId);
 }

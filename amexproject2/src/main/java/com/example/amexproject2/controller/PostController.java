@@ -13,8 +13,12 @@ import javax.persistence.Entity;
 @RequestMapping("/post")
 public class PostController {
 
-    @Autowired
     PostService postService;
+
+    @Autowired
+    public void setPostService(PostService postService) {
+        this.postService = postService;
+    }
 
     // create a post
     @PostMapping("/{username}")

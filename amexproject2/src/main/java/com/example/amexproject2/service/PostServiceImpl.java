@@ -12,10 +12,11 @@ import org.springframework.stereotype.Service;
 public class PostServiceImpl implements PostService {
 
     @Autowired
-    PostRepository postRepository;
+    private PostRepository postRepository;
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
+
 
     @Override
     public Post createPost(String username,

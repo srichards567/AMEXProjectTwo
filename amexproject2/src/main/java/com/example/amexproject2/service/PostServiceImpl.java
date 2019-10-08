@@ -6,6 +6,10 @@ import com.example.amexproject2.repository.PostRepository;
 import com.example.amexproject2.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,14 +26,31 @@ public class PostServiceImpl implements PostService {
     public Post createPost(String username,
                            Post newPost) {
         User userWhoPosts = userRepository.findByUsername(username);
-        newPost.setUser(userWhoPosts);
-        return postRepository.save(newPost);
+        if (userWhoPosts != null) {
+            newPost.setUser(userWhoPosts);
+            return postRepository.save(newPost);
+        }
+        System.out.println(HttpStatus.BAD_REQUEST);
+       return null;
     }
 
     @Override
-    public HttpStatus deleteById(Long postId){
-        postRepository.deleteById(postId);
-        return HttpStatus.OK;
+    public HttpStatus deleteById(Long postId) {
+        String currentUsername = null;
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            currentUsername = authentication.getName();
+        }
+
+        if (postRepository.findById(postId).get().getUser().getUsername().equals(currentUsername)) {
+            postRepository.deleteById(postId);
+            return HttpStatus.OK;
+        } else if (!(postRepository.findById(postId).get().getUser().getUsername().equals(currentUsername))) {
+            return HttpStatus.BAD_REQUEST;
+        }
+
+        return null;
     }
 
     public Post getPostById(Long postId) {

@@ -3,14 +3,14 @@ package com.example.amexproject2.controller;
 import com.example.amexproject2.model.User;
 import com.example.amexproject2.model.UserProfile;
 import com.example.amexproject2.service.UserProfileServiceStub;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 public class UserProfileControllerTest {
 
+    // We post and get a profile in our userController
     private UserController userController;
-
-    private User user;
 
     @Before
     public void initializeUserProfileController(){
@@ -18,20 +18,31 @@ public class UserProfileControllerTest {
         userController.setUserProfileService(new UserProfileServiceStub());
     }
 
+    // ============ TEST FOR CREATE A USER PROFILE ======================
     @Test
     public void createUserProfile_saveUserProfile_Success() {
-        User mockUser = new User();
-        mockUser.setUsername("pam");
-        mockUser.setPassword("lovesjim");
-        mockUser.setEmail("pamh@dm.com");
-
         UserProfile pamUserProfile = new UserProfile();
-
-
-        pamUserProfile.setAddress("Scranton, PA");
         pamUserProfile.setAltEmail("pam@aol.com");
         pamUserProfile.setMobile("570-343-3400");
+        pamUserProfile.setAddress("Scranton, PA");
 
+        UserProfile newProfile = userController.createUserProfile("pam", pamUserProfile);
 
+        Assert.assertNotNull(newProfile);
+        Assert.assertEquals(pamUserProfile.getAltEmail(), newProfile.getAltEmail());
+        Assert.assertEquals(pamUserProfile.getMobile(), newProfile.getMobile());
+        Assert.assertEquals(pamUserProfile.getAddress(), newProfile.getAddress());
     }
+
+    // ================== TEST GET PROFILE ===============================
+
+    @Test
+    public void getUserProfile_returnUserProfile_Success() {
+
+        UserProfile tempUserProfile = userController.viewUserProfile("jsmith");
+        Assert.assertNotNull(tempUserProfile.getAltEmail());
+        Assert.assertNotNull(tempUserProfile.getMobile());
+        Assert.assertNotNull(tempUserProfile.getAddress());
+        }
+
 }

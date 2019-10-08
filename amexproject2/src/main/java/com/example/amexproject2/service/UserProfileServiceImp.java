@@ -1,5 +1,6 @@
 package com.example.amexproject2.service;
 
+import com.example.amexproject2.controller.SecurityController;
 import com.example.amexproject2.model.User;
 import com.example.amexproject2.model.UserProfile;
 import com.example.amexproject2.repository.UserProfileRepository;
@@ -17,18 +18,21 @@ public class UserProfileServiceImp implements UserProfileService {
     @Autowired
     UserProfileRepository userProfileRepository;
 
+    @Autowired
+    SecurityController securityController;
+
 
     @Override
-    public UserProfile createUserProfile(String username, UserProfile newUserProfile) {
-        User userToUpdate = userRepository.findByUsername(username);
+    public UserProfile createUserProfile(UserProfile newUserProfile) {
+        User userToUpdate = userRepository.findByUsername(securityController.getCurrentUsername());
         newUserProfile.setUser(userToUpdate);
         userToUpdate.setUserProfile(newUserProfile);
         return userProfileRepository.save(newUserProfile);
     }
 
     @Override
-    public UserProfile getUserProfile(String username) {
-        User userProfileToGet = userRepository.findByUsername(username);
+    public UserProfile getUserProfile() {
+        User userProfileToGet = userRepository.findByUsername(securityController.getCurrentUsername());
         return userProfileToGet.getUserProfile();
     }
 }

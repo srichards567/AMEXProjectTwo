@@ -1,5 +1,9 @@
 package com.example.amexproject2.model;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 
 @Entity
@@ -16,10 +20,10 @@ public class Comment {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.PERSIST,
+            CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "post_id")
     private Post post;
-
 
     public User getUser() {
         return user;

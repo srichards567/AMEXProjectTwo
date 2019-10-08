@@ -17,9 +17,15 @@ public class CommentController {
         return commentService.createComment(username, post_id, newComment);
     }
 
+    // list a user's comments
     @GetMapping("/user/{user_id}/list")
-    public Iterable<Comment> listAllComments(@PathVariable Long user_id) {
+    public Iterable<Comment> listAllUserComments(@PathVariable Long user_id) {
+        return commentService.listAllUsersComments(user_id);
+    }
 
+    // list all comments
+    @GetMapping("/list")
+    public Iterable<Comment> listAllComments() {
         return commentService.listAllComments();
     }
 

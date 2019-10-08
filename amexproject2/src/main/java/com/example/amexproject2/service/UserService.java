@@ -25,4 +25,6 @@ public interface UserService extends UserDetailsService {
 //    public Profile getProfile();
 
     public UserProfile createUserProfile(UserProfile newUserProfile);
+
+//    public String getToken(String token);
 }

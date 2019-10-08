@@ -1,16 +1,16 @@
 package com.example.amexproject2.controller;
 
 import com.example.amexproject2.config.JwtUtil;
+import com.example.amexproject2.model.User;
 import com.example.amexproject2.service.UserProfileService;
 import com.example.amexproject2.service.UserService;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
-// Autowired is a type of factory design model - we specify what we want to build by passing the obj
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -40,12 +40,20 @@ public class UserControllerTest {
     @MockBean
     private UserService userService;
 
-    @MockBean
-    private UserProfileService userProfileService;
+//    @MockBean
+//    private UserProfileService userProfileService;
+//
+//    @Autowired
+//    UserProfileService userProfileService;
 
     // this JSON security mock bean is here because we are testing how it handles our requests
     @MockBean
     private JwtUtil jwtUtil;
+
+    @MockBean
+    private User user;
+
+    // ================== LOGIN TEST ===============================
 
     @Test
     public void login_Success() throws Exception{
@@ -68,6 +76,7 @@ public class UserControllerTest {
         System.out.println(result.getResponse().getContentAsString());
     }
 
+    // ================== TEST SIGN UP ===============================
     @Test
     public void signUp_Success() throws Exception{
 
@@ -91,6 +100,24 @@ public class UserControllerTest {
         System.out.println(result.getResponse().getContentAsString());
     }
 
+//    // ================== TEST CREATE PROFILE ===============================
+//    @Test
+//    public void createProfile_Success() throws Exception {
+//        user.setUsername("pam");
+//        user.setPassword("ilovejim");
+//
+//        RequestBuilder requestBuilder = MockMvcRequestBuilders
+//                .post("/user/profile/pam")
+//                .contentType(MediaType.APPLICATION_JSON)
+//                .content((createProfileInJson("570-343-3400", "Scranton, PA", "pamh@df.com")));
+//
+//        when(userProfileService.createUserProfile(user.getUsername(), createProfileInJson()))
+//
+//
+//
+//    }
+    // ================== MOCK METHODS ===============================
+
     private static String createUserInJson (String username, String password) {
         return "{ \"username\": \"" + username + "\", " +
                 "\"password\":\"" + password + "\"}";
@@ -98,11 +125,22 @@ public class UserControllerTest {
 
     private static String createUserSignUpInJson(String username, String password, String email) throws JSONException {
         JSONObject obj = new JSONObject();
-        JSONObject userRole = new JSONObject();
         obj.put("username",  username );
         obj.put("password", password);
         obj.put("email", email);
 
         return obj.toString();
     }
+
+    private static String createProfileInJson(String mobile, String address, String altEmail) throws JSONException {
+        JSONObject obj = new JSONObject();
+        obj.put("mobile", mobile);
+        obj.put("address", address);
+        obj.put("altEmail", altEmail);
+
+        return obj.toString();
+
+    }
+
+
 }

@@ -17,8 +17,17 @@ public class UserController {
     @Autowired
     UserService userService;
 
+
+//    @Autowired
+//    UserProfileService userProfileService;
+//
+    // ======== for testing purposes =======
+    private UserProfileService userProfileService;
+
     @Autowired
-    UserProfileService userProfileService;
+    public void setUserProfileService(UserProfileService userProfileService){
+        this.userProfileService = userProfileService;
+    }
 
     @GetMapping("/hello")
     public String hello() {

@@ -9,8 +9,13 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/comment")
 public class CommentController {
-    @Autowired
     CommentService commentService;
+
+    @Autowired
+    public void setCommentService(CommentService commentService) {
+        this.commentService = commentService;
+    }
+
 
     // create a comment
     @PostMapping("/{post_id}")

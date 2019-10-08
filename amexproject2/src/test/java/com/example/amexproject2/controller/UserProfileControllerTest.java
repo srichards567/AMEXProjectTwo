@@ -12,6 +12,7 @@ public class UserProfileControllerTest {
     // We post and get a profile in our userController
     private UserController userController;
 
+    // Since we are testing our services we use the Stub we made as the service
     @Before
     public void initializeUserProfileController(){
         userController = new UserController();

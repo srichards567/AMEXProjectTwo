@@ -25,7 +25,7 @@ public class PostControllerTest {
 
         Post newPost = postController.createPost(post);
 
-        Assert.assertNotNull(newPost);
+        Assert.assertNotNull(newPost.getBody());
         Assert.assertEquals(newPost.getBody(), post.getBody());
     }
 

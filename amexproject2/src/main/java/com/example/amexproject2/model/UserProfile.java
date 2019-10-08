@@ -30,7 +30,7 @@ public class UserProfile {
     @JsonIgnore
     @OneToOne(mappedBy = "userProfile",
     cascade = {CascadeType.DETACH,
-    CascadeType.MERGE, CascadeType.MERGE,
+    CascadeType.MERGE,
     CascadeType.PERSIST,
     CascadeType.REFRESH})
     public User user;

@@ -34,21 +34,25 @@ public class UserController {
         return "Hello World";
     }
 
+    // create a user
     @PostMapping("/signup")
     public ResponseEntity<?> createUser(@RequestBody User newUser) {
         return ResponseEntity.ok(new JwtResponse(userService.createUser(newUser)));
     }
 
+    // user login
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody User user) {
         return ResponseEntity.ok(new JwtResponse(userService.login(user)));
     }
 
+    // view a user profile
     @GetMapping("user/profile/{username}")
     public UserProfile viewUserProfile(@PathVariable String username) {
         return userProfileService.getUserProfile(username);
     }
 
+    // create a user profile
     @PostMapping("user/profile/{username}")
     public UserProfile createUserProfile(@PathVariable String username, @RequestBody UserProfile newUserProfile) {
         return userProfileService.createUserProfile(username, newUserProfile);

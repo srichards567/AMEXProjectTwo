@@ -24,7 +24,7 @@ The `user` maps `user_profile` one-to-one and vice versa because each user has o
 The `post` model has the fields id, title, user_id and body. This model maps to `user` many-to-one on user.user_profile_id = post.user_id because many posts can belong to one user.<br/>
 The `comment` model has the fields id, body, post_id, and user_id. This model maps `user` many-to-one because many comments can have one user. `User` maps `comment` one-to-one because only one user belongs to a comment. `Comment` maps `post` many-to-one because one post can have many comments. <br/>
 
-We used Trello to break down the project and set tasks for ourselves on a daily basis.
+We used Trello to break down the project and set tasks for ourselves on a daily basis.<br/>
 Link to Trello Board: https://trello.com/b/AlYHVCIu/project-2
 # Installation Instructions
 

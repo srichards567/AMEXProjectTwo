@@ -26,7 +26,7 @@ public class UserProfileControllerTest {
         pamUserProfile.setMobile("570-343-3400");
         pamUserProfile.setAddress("Scranton, PA");
 
-        UserProfile newProfile = userController.createUserProfile("pam", pamUserProfile);
+        UserProfile newProfile = userController.createUserProfile(pamUserProfile);
 
         Assert.assertNotNull(newProfile);
         Assert.assertEquals(pamUserProfile.getAltEmail(), newProfile.getAltEmail());
@@ -39,7 +39,7 @@ public class UserProfileControllerTest {
     @Test
     public void getUserProfile_returnUserProfile_Success() {
 
-        UserProfile tempUserProfile = userController.viewUserProfile("jsmith");
+        UserProfile tempUserProfile = userController.viewUserProfile();
         Assert.assertNotNull(tempUserProfile.getAltEmail());
         Assert.assertNotNull(tempUserProfile.getMobile());
         Assert.assertNotNull(tempUserProfile.getAddress());

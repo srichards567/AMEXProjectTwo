@@ -18,6 +18,11 @@ public class CommentController {
         return commentService.createComment(post_id, newComment);
     }
 
+    @GetMapping("/{post_id")
+    public Iterable<Comment> viewPostComments(@PathVariable Long post_id) {
+        return commentService.listAllPostsComments(post_id);
+    }
+
     // list a user's comments
     @GetMapping("/list")
     public Iterable<Comment> listAllUserComments() {

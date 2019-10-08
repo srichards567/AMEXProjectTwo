@@ -52,4 +52,9 @@ public class CommentServiceImpl implements CommentService {
         Long userId = userRepository.findByUsername(securityController.getCurrentUsername()).getId();
         return commentRepository.findByUserId(userId);
     }
+
+
+    public Iterable<Comment> listAllPostsComments(Long postId){
+        return commentRepository.findByPostId(postId);
+    }
 }

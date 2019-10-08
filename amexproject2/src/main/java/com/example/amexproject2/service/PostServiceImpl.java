@@ -44,7 +44,6 @@ public class PostServiceImpl implements PostService {
 
         String currentUsername = securityController.getCurrentUsername();
 
-
         if (postRepository.findById(postId).get().getUser().getUsername().equals(currentUsername)) {
             postRepository.deleteById(postId);
             return HttpStatus.OK;

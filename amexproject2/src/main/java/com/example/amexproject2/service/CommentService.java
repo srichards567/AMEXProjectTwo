@@ -14,4 +14,6 @@ public interface CommentService {
 
     public Iterable<Comment> listAllUsersComments();
 
+    public Iterable<Comment> listAllPostsComments(Long postId);
+
     }

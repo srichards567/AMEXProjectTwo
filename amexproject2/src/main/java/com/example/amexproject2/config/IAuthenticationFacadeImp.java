@@ -11,6 +11,5 @@ import org.springframework.stereotype.Component;
         return SecurityContextHolder.getContext().getAuthentication();
         }
 
-
 }
 

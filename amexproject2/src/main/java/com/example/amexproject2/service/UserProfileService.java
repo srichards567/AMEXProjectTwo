@@ -8,7 +8,7 @@ import java.util.Optional;
 @Service
 public interface UserProfileService {
 
-    public UserProfile createUserProfile(String username, UserProfile newUserProfile);
+    public UserProfile createUserProfile(UserProfile newUserProfile);
 
-    public UserProfile getUserProfile(String username);
+    public UserProfile getUserProfile();
 }

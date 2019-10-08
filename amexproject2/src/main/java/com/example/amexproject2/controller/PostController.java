@@ -34,13 +34,13 @@ public class PostController {
         return postService.getPostById(postId);
     }
 
-    // get a specific post
+    // get all posts
     @GetMapping("/list")
     public Iterable<Post> listAllPosts()  {
         return postService.listAllPosts();
     }
 
-    // user can view and create a profile
+    // get all posts by user
     @GetMapping("/{userId}/list")
     public Iterable<Post> listPosts(@PathVariable Long userId) {
         return postService.listUsersPosts(userId);

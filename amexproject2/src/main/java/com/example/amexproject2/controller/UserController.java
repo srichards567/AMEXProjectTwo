@@ -1,5 +1,6 @@
 package com.example.amexproject2.controller;
 
+import com.example.amexproject2.config.IAuthenticationFacade;
 import com.example.amexproject2.model.JwtResponse;
 import com.example.amexproject2.model.User;
 import com.example.amexproject2.model.UserProfile;
@@ -7,12 +8,14 @@ import com.example.amexproject2.service.UserProfileService;
 import com.example.amexproject2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
 @RestController
 public class UserController {
+
 
     @Autowired
     UserService userService;

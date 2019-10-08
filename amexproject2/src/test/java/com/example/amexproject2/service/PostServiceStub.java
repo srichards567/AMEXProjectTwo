@@ -9,7 +9,7 @@ import java.util.List;
 public class PostServiceStub implements PostService {
 
     @Override
-    public Post createPost(String username, Post newPost) {
+    public Post createPost(Post newPost) {
         Post post = new Post();
         post.setBody("A new post");
         return post;
@@ -30,6 +30,11 @@ public class PostServiceStub implements PostService {
     }
 
     @Override
+    public Iterable<Post> listUsersPosts() {
+        return null;
+    }
+
+    @Override
     public HttpStatus deleteById(Long postId) {
         return null;
     }
@@ -39,9 +44,5 @@ public class PostServiceStub implements PostService {
         return null;
     }
 
-    @Override
-    public Iterable<Post> listUsersPosts(Long userId) {
-        return null;
-    }
 
 }

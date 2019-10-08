@@ -5,7 +5,7 @@ import com.example.amexproject2.model.UserProfile;
 
 public class UserProfileServiceStub implements UserProfileService {
     @Override
-    public UserProfile createUserProfile(String username, UserProfile newUserProfile) {
+    public UserProfile createUserProfile(UserProfile newUserProfile) {
         UserProfile userProfile = new UserProfile();
         userProfile.setAddress("Scranton, PA");
         userProfile.setAltEmail("pam@aol.com");
@@ -15,7 +15,7 @@ public class UserProfileServiceStub implements UserProfileService {
     }
 
     @Override
-    public UserProfile getUserProfile(String username) {
+    public UserProfile getUserProfile() {
         UserProfile userProfile = new UserProfile();
         userProfile.setMobile("999-999-9999");
         userProfile.setAltEmail("jsmith@mail.com");

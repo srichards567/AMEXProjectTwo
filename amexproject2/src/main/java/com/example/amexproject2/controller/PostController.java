@@ -21,9 +21,9 @@ public class PostController {
     }
 
     // create a post
-    @PostMapping("/{username}")
-    public Post createPost(@PathVariable String username, @RequestBody Post newPost) {
-        return postService.createPost(username, newPost);
+    @PostMapping
+    public Post createPost(@RequestBody Post newPost) {
+        return postService.createPost(newPost);
     }
 
     // delete a post
@@ -39,15 +39,15 @@ public class PostController {
     }
 
     // get all posts
-    @GetMapping("/list")
+    @GetMapping("/list/all")
     public Iterable<Post> listAllPosts()  {
         return postService.listAllPosts();
     }
 
     // get all posts by user
-    @GetMapping("/{userId}/list")
-    public Iterable<Post> listPosts(@PathVariable Long userId) {
-        return postService.listUsersPosts(userId);
+    @GetMapping("/list")
+    public Iterable<Post> listPosts() {
+        return postService.listUsersPosts();
     }
 
 }

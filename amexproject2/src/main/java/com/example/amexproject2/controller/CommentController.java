@@ -13,19 +13,24 @@ public class CommentController {
     CommentService commentService;
 
     // create a comment
-    @PostMapping("/{username}/{post_id}")
-    public Comment createComment(@PathVariable String username, @PathVariable Long post_id, @RequestBody Comment newComment) {
-        return commentService.createComment(username, post_id, newComment);
+    @PostMapping("/{post_id}")
+    public Comment createComment(@PathVariable Long post_id, @RequestBody Comment newComment) {
+        return commentService.createComment(post_id, newComment);
+    }
+
+    @GetMapping("/{post_id")
+    public Iterable<Comment> viewPostComments(@PathVariable Long post_id) {
+        return commentService.listAllPostsComments(post_id);
     }
 
     // list a user's comments
-    @GetMapping("/user/{user_id}/list")
-    public Iterable<Comment> listAllUserComments(@PathVariable Long user_id) {
-        return commentService.listAllUsersComments(user_id);
+    @GetMapping("/list")
+    public Iterable<Comment> listAllUserComments() {
+        return commentService.listAllUsersComments();
     }
 
     // list all comments
-    @GetMapping("/list")
+    @GetMapping("/list/all")
     public Iterable<Comment> listAllComments() {
         return commentService.listAllComments();
     }

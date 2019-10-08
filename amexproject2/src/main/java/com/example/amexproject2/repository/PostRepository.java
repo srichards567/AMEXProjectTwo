@@ -13,4 +13,5 @@ public interface PostRepository extends CrudRepository<Post, Long> {
 
     @Query("FROM Post p WHERE p.user_id = ?1")
     public Iterable<Post> findByUserId(Long userId);
+
 }

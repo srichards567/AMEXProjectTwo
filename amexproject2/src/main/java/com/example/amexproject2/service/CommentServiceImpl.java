@@ -1,4 +1,5 @@
 package com.example.amexproject2.service;
+import com.example.amexproject2.controller.SecurityController;
 import com.example.amexproject2.model.Comment;
 import com.example.amexproject2.model.Post;
 import com.example.amexproject2.model.User;
@@ -22,9 +23,13 @@ public class CommentServiceImpl implements CommentService {
     @Autowired
     PostRepository postRepository;
 
+    @Autowired
+    SecurityController securityController;
+
+
     @Override
-    public Comment createComment(String username, Long postId, Comment newComment) {
-        User userWhoComments = userRepository.findByUsername(username);
+    public Comment createComment(Long postId, Comment newComment) {
+        User userWhoComments = userRepository.findByUsername(securityController.getCurrentUsername());
         newComment.setUser(userWhoComments);
         Post postWithComment = postRepository.findById(postId).get();
         newComment.setPost(postWithComment);
@@ -36,13 +41,20 @@ public class CommentServiceImpl implements CommentService {
         commentRepository.deleteById(id);
         return HttpStatus.OK;
     }
+
     @Override
     public Iterable<Comment> listAllComments() {
         return commentRepository.findAll();
     }
 
     @Override
-    public Iterable<Comment> listAllUsersComments(Long userId) {
-       return commentRepository.findByUserId(userId);
+    public Iterable<Comment> listAllUsersComments() {
+        Long userId = userRepository.findByUsername(securityController.getCurrentUsername()).getId();
+        return commentRepository.findByUserId(userId);
+    }
+
+
+    public Iterable<Comment> listAllPostsComments(Long postId){
+        return commentRepository.findByPostId(postId);
     }
 }

@@ -50,15 +50,15 @@ public class UserController {
     }
 
     // view a user profile
-    @GetMapping("user/profile/{username}")
-    public UserProfile viewUserProfile(@PathVariable String username) {
-        return userProfileService.getUserProfile(username);
+    @GetMapping("/profile")
+    public UserProfile viewUserProfile() {
+        return userProfileService.getUserProfile();
     }
 
     // create a user profile
-    @PostMapping("user/profile/{username}")
-    public UserProfile createUserProfile(@PathVariable String username, @RequestBody UserProfile newUserProfile) {
-        return userProfileService.createUserProfile(username, newUserProfile);
+    @PostMapping("/profile")
+    public UserProfile createUserProfile(@RequestBody UserProfile newUserProfile) {
+        return userProfileService.createUserProfile(newUserProfile);
     }
 
 //    @GetMapping("/token/{username}")

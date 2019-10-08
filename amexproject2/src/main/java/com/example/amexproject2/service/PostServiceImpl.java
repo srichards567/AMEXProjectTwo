@@ -26,15 +26,10 @@ public class PostServiceImpl implements PostService {
     private UserRepository userRepository;
 
     @Override
-    public Post createPost(String username,
-                           Post newPost) {
-        User userWhoPosts = userRepository.findByUsername(username);
-        if (userWhoPosts != null) {
-            newPost.setUser(userWhoPosts);
-            return postRepository.save(newPost);
-        }
-        System.out.println(HttpStatus.BAD_REQUEST);
-       return null;
+    public Post createPost(Post newPost) {
+        User userWhoPosts = userRepository.findByUsername(securityController.getCurrentUsername());
+        newPost.setUser(userWhoPosts);
+        return postRepository.save(newPost);
     }
 
     @Override
@@ -48,7 +43,6 @@ public class PostServiceImpl implements PostService {
 //        }
 
         String currentUsername = securityController.getCurrentUsername();
-
 
         if (postRepository.findById(postId).get().getUser().getUsername().equals(currentUsername)) {
             postRepository.deleteById(postId);
@@ -69,7 +63,8 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public Iterable<Post> listUsersPosts(Long userId) {
+    public Iterable<Post> listUsersPosts() {
+        Long userId = userRepository.findByUsername(securityController.getCurrentUsername()).getId();
         return postRepository.findByUserId(userId);
     }
 

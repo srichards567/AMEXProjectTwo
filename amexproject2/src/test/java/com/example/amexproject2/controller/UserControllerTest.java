@@ -76,7 +76,7 @@ public class UserControllerTest {
                 .post("/signup")
                 .contentType(MediaType.APPLICATION_JSON)
                 //.content(createUserInJson("joe","abc"));
-                .content(createUserSignUpInJson("Michael","scott", "ROLE_ADMIN"));
+                .content(createUserSignUpInJson("Michael","scott", "mscott@dm.com"));
 
 
         // if success return paper
@@ -96,20 +96,13 @@ public class UserControllerTest {
                 "\"password\":\"" + password + "\"}";
     }
 
-    private static String createUserSignUpInJson(String username, String password, String role) throws JSONException {
+    private static String createUserSignUpInJson(String username, String password, String email) throws JSONException {
         JSONObject obj = new JSONObject();
         JSONObject userRole = new JSONObject();
-        userRole.put("name", role);
         obj.put("username",  username );
         obj.put("password", password);
-        obj.put("userRole", userRole);
-
-        // System.out.println(obj.toString());
+        obj.put("email", email);
 
         return obj.toString();
-
-//        return "{ \"username\": \"" + username + "\", " +
-//                "\"password\": \"" + password + "\", " +
-//                "\"userRole\": { \"name\":" + "\"" + role + "\"} }";
     }
 }

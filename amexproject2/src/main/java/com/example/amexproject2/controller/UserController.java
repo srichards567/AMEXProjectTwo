@@ -45,12 +45,11 @@ public class UserController {
         return userProfileService.createUserProfile(username, newUserProfile);
     }
 
-    // user can view and create a profile
-
-//    @GetMapping("/user/list/posts")
-//    public Iterable<User> listPosts() {
-//        return userService.listPosts();
+//    @GetMapping("/token/{username}")
+//    public String getToken(@PathVariable String username) {
+//        if (userService.getToken(username) == null || userService.getToken(username).isEmpty()) {
+//            return "empty";
+//        }
+//        return "not empty";
 //    }
-//
-
 }

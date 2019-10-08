@@ -9,6 +9,7 @@ import com.example.amexproject2.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+
 @Service
 public class CommentServiceImpl implements CommentService {
 
@@ -28,8 +29,8 @@ public class CommentServiceImpl implements CommentService {
         Post postWithComment = postRepository.findById(postId).get();
         newComment.setPost(postWithComment);
         return commentRepository.save(newComment);
-
     }
+
     @Override
     public HttpStatus deleteComment(Long id) {
         commentRepository.deleteById(id);

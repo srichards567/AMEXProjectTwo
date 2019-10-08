@@ -1,6 +1,7 @@
 package com.example.amexproject2.model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -30,12 +31,23 @@ public class User {
     @Column(unique = true)
     public String email;
 
+//    @Column(length=1000)
+//    public String token;
+
     public User() {}
 
     @OneToOne(cascade =
             CascadeType.ALL)
     @JoinColumn(name="profile_id")
     private UserProfile userProfile;
+
+//    public String getToken() {
+//        return token;
+//    }
+//
+//    public void setToken(String token) {
+//        this.token = token;
+//    }
 
     public Long getId() {
         return id;

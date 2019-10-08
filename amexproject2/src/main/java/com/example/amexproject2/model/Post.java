@@ -33,13 +33,12 @@ public class Post {
     @JoinColumn(name="user_id")
     private User user;
 
-//    @JoinTable(name = "user_posts",
-//            joinColumns = {@JoinColumn(name = "post_id")},
-//            inverseJoinColumns = @JoinColumn(name = "user_id"))
-//    private List<User> users;
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    private List<Comment> comments;
 
-//    @OneToOne(mapepdBy = "")
     public Post() {}
+
+
     // getters and setters
     public void setUser(User user) {
         this.user = user;
@@ -73,4 +72,11 @@ public class Post {
         this.body = body;
     }
 
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
 }

@@ -16,6 +16,7 @@ public interface PostService {
     public Post createPost(String username, Post newPost);
 
     // delete post
+    //public HttpStatus deleteById(Long postId, String username);
     public HttpStatus deleteById(Long postId);
 
     // get specific post

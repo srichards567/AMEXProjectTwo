@@ -70,6 +70,8 @@ public class UserServiceImpl implements UserService {
         newUser.setPassword(bCryptPasswordEncoder.encode(newUser.getPassword()));
         if(userRepository.save(newUser) != null){
             UserDetails userDetails = loadUserByUsername(newUser.getUsername());
+//            newUser.setToken(jwtUtil.generateToken(userDetails));
+//            userRepository.save(newUser);
             return jwtUtil.generateToken(userDetails);
         }
         return null;
@@ -81,10 +83,18 @@ public class UserServiceImpl implements UserService {
         //userRepository.login(user.getUsername(), user.getPassword()) != null
         if(newUser != null && bCryptPasswordEncoder.matches(user.getPassword(), newUser.getPassword())){
             UserDetails userDetails = loadUserByUsername(newUser.getUsername());
+//            newUser.setToken(jwtUtil.generateToken(userDetails));
+//            userRepository.save(newUser);
+//            return newUser.getToken();
             return jwtUtil.generateToken(userDetails);
         }
         return null;
     }
+
+//    @Override
+//    public String getToken(String username) {
+//        return userRepository.findByUsername(username).getToken();
+//    }
 
     public UserProfile createUserProfile(UserProfile newUserProfile) {
         return null;

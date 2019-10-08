@@ -6,11 +6,21 @@ import com.example.amexproject2.model.UserProfile;
 public class UserProfileServiceStub implements UserProfileService {
     @Override
     public UserProfile createUserProfile(String username, UserProfile newUserProfile) {
-        UserProfile userProfile = new User()
+        UserProfile userProfile = new UserProfile();
+        userProfile.setAddress("Scranton, PA");
+        userProfile.setAltEmail("pam@aol.com");
+        userProfile.setMobile("570-343-3400");
+
+        return userProfile;
     }
 
     @Override
     public UserProfile getUserProfile(String username) {
-        return null;
+        UserProfile userProfile = new UserProfile();
+        userProfile.setMobile("999-999-9999");
+        userProfile.setAltEmail("jsmith@mail.com");
+        userProfile.setAddress("555 Hope Lane");
+
+        return userProfile;
     }
 }

@@ -2,12 +2,18 @@ package com.example.amexproject2.controller;
 
 import com.example.amexproject2.config.JwtUtil;
 import com.example.amexproject2.model.User;
+import com.example.amexproject2.model.UserProfile;
+import com.example.amexproject2.repository.UserProfileRepository;
+import com.example.amexproject2.repository.UserRepository;
 import com.example.amexproject2.service.UserProfileService;
 import com.example.amexproject2.service.UserService;
+import com.example.amexproject2.service.UserServiceImpl;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -20,7 +26,9 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.mockito.Mockito.when;
@@ -40,8 +48,15 @@ public class UserControllerTest {
     @MockBean
     private UserService userService;
 
-//    @MockBean
-//    private UserProfileService userProfileService;
+    @MockBean
+    private UserRepository userRepository;
+
+
+    @MockBean
+    private UserProfileService userProfileService;
+
+    @Mock
+    private UserProfileRepository userProfileRepository;
 //
 //    @Autowired
 //    UserProfileService userProfileService;
@@ -50,7 +65,7 @@ public class UserControllerTest {
     @MockBean
     private JwtUtil jwtUtil;
 
-    @MockBean
+    @InjectMocks
     private User user;
 
     // ================== LOGIN TEST ===============================
@@ -100,22 +115,6 @@ public class UserControllerTest {
         System.out.println(result.getResponse().getContentAsString());
     }
 
-//    // ================== TEST CREATE PROFILE ===============================
-//    @Test
-//    public void createProfile_Success() throws Exception {
-//        user.setUsername("pam");
-//        user.setPassword("ilovejim");
-//
-//        RequestBuilder requestBuilder = MockMvcRequestBuilders
-//                .post("/user/profile/pam")
-//                .contentType(MediaType.APPLICATION_JSON)
-//                .content((createProfileInJson("570-343-3400", "Scranton, PA", "pamh@df.com")));
-//
-//        when(userProfileService.createUserProfile(user.getUsername(), createProfileInJson()))
-//
-//
-//
-//    }
     // ================== MOCK METHODS ===============================
 
     private static String createUserInJson (String username, String password) {

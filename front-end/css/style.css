@@ -1,38 +1,31 @@
 body {
   display: flex;
   flex-direction: column;
-}
-
-header {
-  height: 100vh;
   background-color: #a5bbd9;
-  color: white;
-  text-align: center;
-  flex-direction: column;
-  display: flex;
-}
-
-header>h1 {
-    font-family: Sacramento, sans-serif;
-    font-size: 12rem;
-    align-items: center;
-    justify-content: center;
-    padding-top: 15%;
-    text-shadow: 2px 2px black;
 }
 
 .navbar {
     display: flex;
     justify-content: space-around;
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: bold;
-    position: fixed;
-    top: 0;
     width: 100%;
     font-family: 'Montserrat', sans-serif;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid black;
+}
+
+header {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+header>h1 {
+    font-family: Sacramento, sans-serif;
+    font-size: 8rem;
+    text-align: center;
+    color: white;
+    justify-content: center;
+    padding-top: 10%;
+    text-shadow: 2px 2px black;
 }
 
 .navbar a {

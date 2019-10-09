@@ -1,6 +1,7 @@
 function loginUser() {
     // LOGIN USER USING THE CREDENTIALS
     const userName = document.querySelector('.loginUsername').value;
+    localStorage.setItem('username', userName);
     const userPassword = document.querySelector('.loginPassword').value;
     fetch('http://localhost:8181/login', {
         method: 'POST',
@@ -21,7 +22,7 @@ function loginUser() {
             localStorage.setItem('user', res.token);
             if (res.token) { // DO I GET A RESPONSE? IF YES:
                 console.log(localStorage.getItem('user'));
-                window.location.href = "index.html";
+                window.location.href = "home.html";
             }
         })
         .catch((error) => {
@@ -29,20 +30,23 @@ function loginUser() {
         })
 }
 
-function userSignup() {
-
-  const userEmail = document.querySelector('.signupEmail').value;
-  const userName = document.querySelector('.signupUsername').value;
+function comparePasswords() {
   const userPassword = document.querySelector('.signupPassword').value;
   const confirmPassword = document.querySelector('.reEnterPassword').value;
-  const signupPassword;
   if (userPassword == confirmPassword) {
-    signupPassword = confirmPassword;
+    return confirmPassword;
   } else {
-    alert("passwords do not match. please re-enter.")
+    alert("Passwords do not match. Please re-enter.")
   }
+}
 
+function userSignup() {
+  const userEmail = document.querySelector('.signupEmail').value;
+  const userName = document.querySelector('.signupUsername').value;
 
+    localStorage.setItem('username', userName);
+  // comparePasswords();
+  const signupPassword = comparePasswords();
 
   fetch('http://localhost:8181/signup',{
       method: 'POST',

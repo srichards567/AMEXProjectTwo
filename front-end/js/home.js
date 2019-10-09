@@ -39,7 +39,36 @@ function hideUpdateProfileBtn() {
 function showUpdateProfileBtn() {
   document.querySelector('.updateProfileBtn').style.display="inline";
 }
+
 // =========== CREATE A PROFILE ==================
+function postUserProfile() {
+  const altEmail = document.querySelector('.altEmail');
+  const mobile = document.querySelector('.mobile');
+  const address = document.querySelector('.address');
+
+
+  fetch('localhost:8181/profile', {
+    method: 'POST',
+    headers: {
+      "Authorization": "Bearer " + localStorage.getItem('user'),
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        additionalEmail: altEmail.value,
+        mobile: mobile.value,
+        address: address.value
+    })
+  })
+  .then((res) =>{
+    alert('You have successfully created a profile');
+    document.querySelector('.fetchedUserProfile').innerText = res;
+    //displayProfile();
+  })
+  .catch((error) => {
+  console.log(error)
+  })
+}
+
 // =========== UPDATE A PROFILE ==================
 // =========== SEE USER POSTS ====================
 // =========== SEE USER COMMENTS =================

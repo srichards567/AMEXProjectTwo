@@ -33,7 +33,7 @@
             Mobile: <input type="text"></input><br/>
             Address:<input type="text"></input><br/>
             Second Email:<input type="text"></input>
-            <button type="submit" onclick="hideMakeProfile()">Submit</input>
+            <button type="submit" onclick="postUserProfile();hideMakeProfile()">Submit</input>
           </div>
 
           <div class="userProfile">
@@ -42,9 +42,9 @@
             <button type="submit" class= "updateProfileBtn" onclick="showUpdateUserProfile();hideUpdateProfileBtn()" >Update Profile</button><br/>
 
             <div class="updateUserProfile">
-              Mobile: <input type="text"></input><br/>
-              Address:<input type="text"></input><br/>
-              Second Email:<input type="text"></input>
+              Mobile: <input class="mobile" type="text"></input><br/>
+              Address: <input class="address" type="text"></input><br/>
+              Second Email:<input class="altEmail" type="text"></input>
               <button type="submit" class="updateUserProfileBtn" onclick="hideUserProfile()">Submit</button>
             </div>
           </div>

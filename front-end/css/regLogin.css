@@ -7,6 +7,11 @@ header {
   display: flex;
 }
 
+h3 {
+  text-shadow: 1px 1px black;
+  font-family: 'Montserrat', sans-serif;
+}
+
 .navbar {
     display: flex;
     justify-content: space-around;
@@ -21,6 +26,7 @@ header {
     border-bottom: 1px solid black;
 }
 
+
 .navbar a {
     text-decoration: none !important;
     color: white;
@@ -28,7 +34,7 @@ header {
 }
 
 .inputFields {
-  background: rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.1);
   padding: 2rem;
   border: 5px solid rgba(0,0,0,0.1);
   border-radius: 10px;
@@ -56,7 +62,7 @@ input {
   width: 250px;
   font-size: 17px;
   border: none;
-  border-bottom: 1px dotted purple;
+  border-bottom: 1px dotted black;
 }
 
 .loginUsername, .signUpEmail  {
@@ -66,16 +72,16 @@ input {
 
 
 input::placeholder {
-  color: purple;
+  color:  gray;
 }
 
 input:focus {
-  color: purple;
+  color:  black;
   padding-left: 10px;
 }
 
 input:not(:focus) {
-  color: purple;
+  color:  black;
   padding-left: 10px;
 }
 
@@ -85,5 +91,5 @@ input:not(:focus) {
   background-size: 100%;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  color: purple;
+  color:  black;
 }

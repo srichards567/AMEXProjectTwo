@@ -1,0 +1,89 @@
+header {
+  height: 100vh;
+  background-color: #a5bbd9;
+  color: white;
+  text-align: center;
+  flex-direction: column;
+  display: flex;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    font-size: 3rem;
+    font-weight: bold;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid black;
+}
+
+.navbar a {
+    text-decoration: none !important;
+    color: white;
+    text-shadow: 1px 1px black;
+}
+
+.inputFields {
+  background: rgba(0,0,0,0.4);
+  padding: 2rem;
+  border: 5px solid rgba(0,0,0,0.1);
+  border-radius: 10px;
+  display: flex;
+  margin: auto;
+  margin-top: 10%;
+  width: 70%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.loginInputs {
+  justify-content: center;
+}
+
+input {
+  background: rgba(255,255,255,0.8);
+  color: purple;
+  height: 40px;
+  width: 250px;
+  font-size: 17px;
+  border: none;
+  border-bottom: 1px dotted purple;
+}
+
+.loginUsername, .signUpEmail  {
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+
+input::placeholder {
+  color: purple;
+}
+
+input:focus {
+  color: purple;
+  padding-left: 10px;
+}
+
+input:not(:focus) {
+  color: purple;
+  padding-left: 10px;
+}
+
+.submitbtn {
+  width: 100%;
+  height: 40px;
+  background-size: 100%;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  color: purple;
+}

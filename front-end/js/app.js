@@ -36,14 +36,15 @@ function comparePasswords() {
   if (userPassword == confirmPassword) {
     return confirmPassword;
   } else {
-    alert("passwords do not match. please re-enter.")
+    alert("Passwords do not match. Please re-enter.")
   }
 }
 
 function userSignup() {
-  localStorage.setItem('username', userName);
   const userEmail = document.querySelector('.signupEmail').value;
   const userName = document.querySelector('.signupUsername').value;
+
+    localStorage.setItem('username', userName);
   // comparePasswords();
   const signupPassword = comparePasswords();
 

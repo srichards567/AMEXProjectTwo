@@ -1,6 +1,7 @@
 function loginUser() {
     // LOGIN USER USING THE CREDENTIALS
     const userName = document.querySelector('.loginUsername').value;
+    localStorage.setItem('username', userName);
     const userPassword = document.querySelector('.loginPassword').value;
     fetch('http://localhost:8181/login', {
         method: 'POST',
@@ -40,7 +41,7 @@ function comparePasswords() {
 }
 
 function userSignup() {
-
+  localStorage.setItem('username', userName);
   const userEmail = document.querySelector('.signupEmail').value;
   const userName = document.querySelector('.signupUsername').value;
   // comparePasswords();

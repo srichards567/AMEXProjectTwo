@@ -1,6 +1,7 @@
 function loginUser() {
     // LOGIN USER USING THE CREDENTIALS
     const userName = document.querySelector('.loginUsername').value;
+    localStorage.setItem('username', userName);
     const userPassword = document.querySelector('.loginPassword').value;
     fetch('http://localhost:8181/login', {
         method: 'POST',
@@ -35,14 +36,15 @@ function comparePasswords() {
   if (userPassword == confirmPassword) {
     return confirmPassword;
   } else {
-    alert("passwords do not match. please re-enter.")
+    alert("Passwords do not match. Please re-enter.")
   }
 }
 
 function userSignup() {
-
   const userEmail = document.querySelector('.signupEmail').value;
   const userName = document.querySelector('.signupUsername').value;
+
+  localStorage.setItem('username', userName);
   const signupPassword = comparePasswords();
 
   fetch('http://localhost:8181/signup',{

@@ -33,7 +33,10 @@ header {
   height: 600px;
   border: 1px solid #f5f5f5;
   background: #f5f5f5;
-  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+ /* overflow: auto; */
 }
 
 .profile {
@@ -49,6 +52,24 @@ header {
   justify-content: center;
 }
 
+.allPosts, .userPosts, .userComments {
+  width: 400px;
+  height: 150px;
+  border: 2px solid black;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
+}
+
+.posts button {
+  color: #6e6d6d;
+  width: 200px;
+  border-radius: 5px;
+  margin: 0 auto;
+  margin-bottom: 5px;
+  margin-top: 2px;
+
+  
 .profile>button{
   color: black;
 }
@@ -59,4 +80,3 @@ header {
 
 .viewProfileBtn, .makeProfile, .userProfile, .updateUserProfile {
   display: none;
-}

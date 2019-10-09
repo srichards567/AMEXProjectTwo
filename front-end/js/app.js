@@ -44,8 +44,7 @@ function userSignup() {
   const userEmail = document.querySelector('.signupEmail').value;
   const userName = document.querySelector('.signupUsername').value;
 
-    localStorage.setItem('username', userName);
-  // comparePasswords();
+  localStorage.setItem('username', userName);
   const signupPassword = comparePasswords();
 
   fetch('http://localhost:8181/signup',{

@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat|Sacramento|Satisfy&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> -->
 </head>
 <body>
 
@@ -17,23 +17,42 @@
       <a href="index.html">Home</a>
       <a href="regLogin.html">Login/Sign Up</a>
     </nav>
+    </header>
 
     <div class="contents">
       <div class="posts">
 
       </div>
       <div class="profile">
-        <button type="submit">Create Profile</button><br/>
-        <button type="submit">Update Profile</button><br/>
-        <button type="submit">See my posts</button><br/>
-        <button type="submit">See my comments</button>
+        <button type="submit" class="createProfileBtn" onclick="showMakeProfile()">Create Profile</button><br/>
+        <button type="submit" class="viewProfileBtn" onclick="showViewerProfile()">View Profile</button><br/>
+        <button type="submit" class="seeMyPostsBtn">See my posts</button><br/>
+        <button type="submit" class="viewMyCmntsBtn">See my comments</button><br/>
 
+          <div class = "makeProfile">
+            Mobile: <input type="text"></input><br/>
+            Address:<input type="text"></input><br/>
+            Second Email:<input type="text"></input>
+            <button type="submit" onclick="hideMakeProfile()">Submit</input>
+          </div>
+
+          <div class="userProfile">
+            <div class ="fetchedUserProfile">
+            </div>
+            <button type="submit" class= "updateProfileBtn" onclick="showUpdateUserProfile();hideUpdateProfileBtn()" >Update Profile</button><br/>
+
+            <div class="updateUserProfile">
+              Mobile: <input type="text"></input><br/>
+              Address:<input type="text"></input><br/>
+              Second Email:<input type="text"></input>
+              <button type="submit" class="updateUserProfileBtn" onclick="hideUserProfile()">Submit</button>
+            </div>
+          </div>
       </div>
     </div>
     <!---
     <iframe src="https://giphy.com/embed/SpocbO9vct5Ntwnwy7" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/stickers/rupaul-scandal-bianca-bosso-SpocbO9vct5Ntwnwy7">via GIPHY</a></p>
     --->
-</header>
 
 <script src="js/home.js" type="text/javascript"></script>
 <script src="js/checkLogin.js" type="text/javascript"></script>

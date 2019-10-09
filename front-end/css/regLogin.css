@@ -1,31 +1,22 @@
-header {
-  height: 100vh;
-  background-color: #a5bbd9;
-  color: white;
-  text-align: center;
-  flex-direction: column;
+body {
   display: flex;
-}
-
-h3 {
-  text-shadow: 1px 1px black;
-  font-family: 'Montserrat', sans-serif;
+  flex-direction: column;
+  background-color: #a5bbd9;
 }
 
 .navbar {
     display: flex;
     justify-content: space-around;
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: bold;
-    position: fixed;
-    top: 0;
     width: 100%;
     font-family: 'Montserrat', sans-serif;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid black;
 }
 
+header {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 
 .navbar a {
     text-decoration: none !important;
@@ -65,7 +56,7 @@ input {
   border-bottom: 1px dotted black;
 }
 
-.loginUsername, .signUpEmail  {
+.loginUsername, .signupEmail  {
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
 }
@@ -92,4 +83,9 @@ input:not(:focus) {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   color:  black;
+}
+
+h3 {
+  color: white;
+  font-family: 'Montserrat', sans-serif;
 }

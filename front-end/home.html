@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="css/home.css">
   <title>Tea Room -Home Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat|Sacramento|Satisfy&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Latest compiled and minified CSS -->
@@ -15,44 +16,43 @@
       <a href="index.html">Home</a>
       <a href="regLogin.html">Login/Sign Up</a>
     </nav>
-    </header>
+  </header>
 
-    <div class="contents">
-      <div class="posts">
-        <button onclick="getAllPosts()">Sip the Tea</button>
-
+  <div class="contents">
+    <div class="postsDiv">
+      <button onclick="getAllPosts()">Sip the Tea</button>
+      <div class="makePost">
+        <textarea class="makePostTitle" type="text" placeholder="Title"></textarea>
+        <textarea class="makePostBody" type="wideInput" placeholder="Body"></textarea>
+        <button class="submitPost" onclick="makeUserPost();eraseText()">Post!</button>
       </div>
+      <div class="posts">
+      </div>
+    </div>
 
-      <div class="profile">
-        <button type="submit" class="createProfileBtn">Create Profile</button><br/>
-        <button type="submit" class="viewProfileBtn" onclick="getUserProfile()">View Profile</button><br/>
-        <button type="submit" class="seeMyPostsBtn">See my posts</button><br/>
-        <button type="submit" class="viewMyCmntsBtn">See my comments</button><br/>
+    <div class="profile">
+      <button type="submit" class="createProfileBtn" onclick="showMakeProfile()">Create Profile</button><br/>
+      <button type="submit" class="viewProfileBtn" onclick="getUserProfile();showUserProfile()">View Profile</button><br/>
+      <button type="submit" class="seeMyPostsBtn">See my posts</button><br/>
+      <button type="submit" class="viewMyCmntsBtn">See my comments</button><br/>
 
-          <div class= "makeProfile">
-            Mobile: <input class="makeProfileMobile" type="text"></input><br/>
-            Address: <input class="makeProfileAddress" type="text"></input><br/>
-            Second Email: <input class="makeProfileEmail" type="text"></input>
-            <button type="submit" onclick="postUserProfile()">Submit</input>
-          </div>
+      <div class= "makeProfile">
+        Mobile: <input class="makeProfileMobile" type="text"></input><br/>
+        Address: <input class="makeProfileAddress" type="text"></input><br/>
+        Second Email: <input class="makeProfileEmail" type="text"></input>
+        <button type="submit" onclick="postUserProfile();hideMakeProfile()">Submit</input>
+        </div>
 
-          <div class="userProfile">
-
-            <!-- <button type="submit" class= "updateProfileBtn" >Update Profile</button><br/>
-            <div class="updateUserProfile">
-              Mobile: <input class="updateMobile" type="text"/><br/>
-              Address: <input class="updateAddress" type="text"/><br/>
-              Second Email: <input class="updateAltEmail" type="text"/>
-              <button type="submit" class="updateUserProfileBtn">Submit</button>
-            </div> -->
-          </div>
+        <div class="userProfile">
+          <button type="submit" class="updateMyProfileBtn">Update Profile</button><br/>
+        </div>
       </div>
     </div>
     <!---
     <iframe src="https://giphy.com/embed/SpocbO9vct5Ntwnwy7" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/stickers/rupaul-scandal-bianca-bosso-SpocbO9vct5Ntwnwy7">via GIPHY</a></p>
     --->
 
-<script src="js/home.js" type="text/javascript"></script>
-<script src="js/checkLogin.js" type="text/javascript"></script>
-</body>
-</html>
+    <script src="js/home.js" type="text/javascript"></script>
+    <script src="js/checkLogin.js" type="text/javascript"></script>
+  </body>
+  </html>

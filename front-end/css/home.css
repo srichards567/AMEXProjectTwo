@@ -70,15 +70,9 @@ header {
   margin-top: 2px;
 }
 
-.userProfile {
-  background: white;
+
+.fetchedUserProfile {
   color: black;
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
 }
-
-/*
-
-.viewProfileBtn, .makeProfile, .userProfile, .updateUserProfile {
-  display: none;
-} */

@@ -1,10 +1,10 @@
 //to list all posts
 const getAllPosts = function() {
-  const postsContainer = document.querySelector('.posts');
-  fetch('http://localhost:8181/post/list/all', {
+  const postsContainer = document.querySelector(‘.posts’);
+  fetch(’http://localhost:8181/post/list/all', {
     headers: {
-      'Authorization': 'Bearer ' + localStorage.getItem('user'),
-      'Content-Type': 'application/json'
+      ‘Authorization’: ‘Bearer ’ + localStorage.getItem(‘user’),
+      ‘Content-Type’: ‘application/json’
     }
   })
   .then((response) => {
@@ -12,12 +12,12 @@ const getAllPosts = function() {
   })
   .then((response) => {
     for(let i = 0; i < response.length; i++) {
-      const newPost = document.createElement('div');
-      newPost.classList = 'allPosts';
-      const title = document.createElement('h2');
+      const newPost = document.createElement(‘div’);
+      newPost.classList = ‘allPosts’;
+      const title = document.createElement(‘h2’);
       title.innerText = response[i].title;
       newPost.appendChild(title);
-      const body = document.createElement('p');
+      const body = document.createElement(‘p’);
       body.innerText = response[i].body;
       newPost.appendChild(body);
       postsContainer.appendChild(newPost);
@@ -27,23 +27,23 @@ const getAllPosts = function() {
     console.log(err);
   })
 }
-        //         const list = document.querySelector('.allPosts')
+        //         const list = document.querySelector(‘.allPosts’)
 
-        //           const comment = document.createElement('input');
-        //           const addComment = document.createElement('button');
-        //           const deleteComment = document.createElement('button');
-        //           const deletePost = document.createElement('button');
+        //           const comment = document.createElement(‘input’);
+        //           const addComment = document.createElement(‘button’);
+        //           const deleteComment = document.createElement(‘button’);
+        //           const deletePost = document.createElement(‘button’);
         //
 
-        //           document.querySelector('.allPosts').appendChild(comment);
-        //           document.querySelector('.allPost').appendChild(addComment);
-        //           document.querySelector('.allPosts').appendChild(deleteComment);
-        //           document.querySelector('.allPosts').appendChild(deletePost);
+        //           document.querySelector(‘.allPosts’).appendChild(comment);
+        //           document.querySelector(‘.allPost’).appendChild(addComment);
+        //           document.querySelector(‘.allPosts’).appendChild(deleteComment);
+        //           document.querySelector(‘.allPosts’).appendChild(deletePost);
         //
-        //           addComment.setAttribute("type", "submit");
-        //           addComment.setAttribute("value", "add");
-        //           deleteComment.setAttribute("type", "submit");
-        //           deleteComment.setAttribute("value", "delete");
+        //           addComment.setAttribute(“type”, “submit”);
+        //           addComment.setAttribute(“value”, “add”);
+        //           deleteComment.setAttribute(“type”, “submit”);
+        //           deleteComment.setAttribute(“value”, “delete”);
 
 
 
@@ -53,9 +53,9 @@ const getData = function(data) {
 }
 
 function updateDOM(data) {
-  const title = document.querySelector('.title');
-  const body = document.querySelector('.body');
-  const comment = document.querySelector('.comment');
+  const title = document.querySelector(‘.title’);
+  const body = document.querySelector(‘.body’);
+  const comment = document.querySelector(‘.comment’);
 
   title.innerText = `Title: ${data.title}`;
   body.innerText = `Body: ${data.body}`;
@@ -66,17 +66,17 @@ function updateDOM(data) {
 //to delete comments
 function deleteComment() {
   fetch(`http://localhost:8181/comment/{comment_id}`, {
-    method: 'DELETE',
+    method: ‘DELETE’,
     headers: {
-      "Authorization" : "Bearer " + localStorage.getItem('user'),
-      "Content-Type" : "application/json"
+      “Authorization” : “Bearer ” + localStorage.getItem(‘user’),
+      “Content-Type” : “application/json”
     },
   })
     .then((response) => {
       return response.json();
     })
     .then((response) => {
-      const comment = document.querySelector('.comment')
+      const comment = document.querySelector(‘.comment’)
       comment.remove();
     })
     .catch((err) => {
@@ -91,11 +91,11 @@ fetch(`http://localhost:8181/comment/list`)
     return response.json();
   })
   .then((response) => {
-    const list = document.querySelector('.userComments')
+    const list = document.querySelector(‘.userComments’)
     for (let i = 0; i < response.length; i ++) {
-      const body = document.createElement('p');
+      const body = document.createElement(‘p’);
 
-      document.querySelector('.userComments').appendChild(body);
+      document.querySelector(‘.userComments’).appendChild(body);
     }
   })
   .catch((err) => {
@@ -112,11 +112,11 @@ const getData1 = function(data) {
 //     return response.json();
 //   })
 //   .then((response) => {
-//     const list = document.querySelector('.userComments')
+//     const list = document.querySelector(‘.userComments’)
 //     for (let i = 0; i < response.length; i ++) {
-//       const body = document.createElement('p');
+//       const body = document.createElement(‘p’);
 //
-//       document.querySelector('.userComments').appendChild(body);
+//       document.querySelector(‘.userComments’).appendChild(body);
 //     }
 //   })
 //   .catch((err) => {
@@ -131,43 +131,43 @@ const getData1 = function(data) {
 // =========== DOM MANIPULATION ==================
 //
 // function showMakeProfile() {
-//   document.querySelector('.makeProfile').style.display="inline";
+//   document.querySelector(‘.makeProfile’).style.display=“inline”;
 // }
 //
 // function hideMakeProfile() {
-//   document.querySelector('.makeProfile').style.display="none";
+//   document.querySelector(‘.makeProfile’).style.display=“none”;
 //   showViewProfileBtn();
 //   hideCreateProfileBtn();
 // }
 //
 // function showViewProfileBtn() {
-//   document.querySelector('.viewProfileBtn').style.display="inline";
+//   document.querySelector(‘.viewProfileBtn’).style.display=“inline”;
 // }
 //
 // function hideCreateProfileBtn() {
-//   document.querySelector('.createProfileBtn').style.display="none";
+//   document.querySelector(‘.createProfileBtn’).style.display=“none”;
 // }
 //
 // function showViewerProfile() {
-//   document.querySelector('.userProfile').style.display = "block";
+//   document.querySelector(‘.userProfile’).style.display = “block”;
 //   showUpdateProfileBtn();
 // }
 //
 // function hideUserProfile() {
-//   document.querySelector('.userProfile').style.display = "none";
-//   document.querySelector('.updateUserProfile').style.display="none";
+//   document.querySelector(‘.userProfile’).style.display = “none”;
+//   document.querySelector(‘.updateUserProfile’).style.display=“none”;
 // }
 //
 // function showUpdateUserProfile() {
-//   document.querySelector('.updateUserProfile').style.display="block";
+//   document.querySelector(‘.updateUserProfile’).style.display=“block”;
 // }
 //
 // function hideUpdateProfileBtn() {
-//   document.querySelector('.updateProfileBtn').style.display="none";
+//   document.querySelector(‘.updateProfileBtn’).style.display=“none”;
 // }
 //
 // function showUpdateProfileBtn() {
-//   document.querySelector('.updateProfileBtn').style.display="inline";
+//   document.querySelector(‘.updateProfileBtn’).style.display=“inline”;
 // }
 
 // =========== MANIPULATE DOM WITH PROMISE VALUES ==================
@@ -177,15 +177,15 @@ function manipulateDom(htmlElementId, res) {
 }
 // =========== CREATE A PROFILE ==================
 function postUserProfile() {
-  const altEmail = document.querySelector('.makeProfileEmail').value;
-  const mobile = document.querySelector('.makeProfileMobile').value;
-  const address = document.querySelector('.makeProfileAddress').value;
+  const altEmail = document.querySelector(‘.makeProfileEmail’).value;
+  const mobile = document.querySelector(‘.makeProfileMobile’).value;
+  const address = document.querySelector(‘.makeProfileAddress’).value;
 
-  fetch ('http://localhost:8181/profile', {
-    method: 'POST',
+  fetch (‘http://localhost:8181/profile’, {
+    method: ‘POST’,
     headers : {
-      "Authorization" : "Bearer " + localStorage.getItem('user'),
-      "Content-Type" : "application/json"
+      “Authorization” : “Bearer ” + localStorage.getItem(‘user’),
+      “Content-Type” : “application/json”
     },
     body: JSON.stringify({
       mobile: mobile,
@@ -194,7 +194,7 @@ function postUserProfile() {
     })
   })
   .then((res) => {
-    alert('You have successfully created a profile');
+    alert(‘You have successfully created a profile’);
     console.log(res);
   })
   .catch((error) => {
@@ -204,26 +204,26 @@ function postUserProfile() {
 
 // =========== GET A PROFILE ==================
 function getUserProfile() {
-  const userProfile = document.querySelector('.userProfile');
+  const userProfile = document.querySelector(‘.userProfile’);
 
-  fetch ('http://localhost:8181/profile', {
+  fetch (‘http://localhost:8181/profile’, {
     headers : {
-      "Authorization" : "Bearer " + localStorage.getItem('user'),
-      "Content-Type" : "application/json"
+      “Authorization” : “Bearer ” + localStorage.getItem(‘user’),
+      “Content-Type” : “application/json”
     }
   })
   .then((res) => {
     return(res.json());
   })
   .then((res) => {
-    const userAltEmail = document.createElement('p');
-    userAltEmail.innerText = "Alt Email: " + res.altEmail;
+    const userAltEmail = document.createElement(‘p’);
+    userAltEmail.innerText = “Alt Email: ” + res.altEmail;
 
-    const userAddress = document.createElement('p');
-    userAddress.innerText = "Address: " + res.address;
+    const userAddress = document.createElement(‘p’);
+    userAddress.innerText = “Address: ” + res.address;
 
-    const userMobile = document.createElement('p');
-    userMobile.innerText = "Mobile: " + res.mobile;
+    const userMobile = document.createElement(‘p’);
+    userMobile.innerText = “Mobile: ” + res.mobile;
 
     userProfile.appendChild(userAltEmail);
     userProfile.appendChild(userAddress);

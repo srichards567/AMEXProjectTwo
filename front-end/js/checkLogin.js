@@ -10,6 +10,7 @@ function checkLogin() {
     navItem.href = "home.html";
 
     const logout = document.createElement('a');
+    logout.href="#";
     logout.innerText = "Log Out";
     logout.addEventListener("click", removeUserInfo);
     navBar.appendChild(logout);

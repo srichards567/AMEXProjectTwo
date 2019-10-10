@@ -12,12 +12,19 @@ const getAllPosts = function() {
     return response.json();
   })
   .then((response) => {
+
+
     postsContainer.innerHTML = "";
     for(let i = 0; i < response.length; i++) {
+      if (response[i].user.username == localStorage.getItem('username')) {
+        localStorage.setItem('userId', response[i].user.id);
+      }
       const newPost = document.createElement('div');
       newPost.classList = 'allPosts';
       newPost.setAttribute('postid', response[i].id);
 
+      if (response[i].user.id == localStorage.getItem('userId')
+    || response[i].user == localStorage.getItem('userId')) {
       const deleteBtn = document.createElement('i');
       deleteBtn.classList = "fa fa-times";
 
@@ -25,9 +32,9 @@ const getAllPosts = function() {
           event.preventDefault();
             requestDeletePost(event);
           })
-
-
       newPost.append(deleteBtn);
+      }
+
 
       const title = document.createElement('h2');
       title.innerText = response[i].title;
@@ -58,7 +65,7 @@ function requestDeletePost(event) {
       getAllPosts();
     })
     .catch((error) => {
-    console.log(id);
+      console.log(error);
     })
 }
 

@@ -46,9 +46,9 @@ public class PostServiceImpl implements PostService {
 
         if (postRepository.findById(postId).get().getUser().getUsername().equals(currentUsername)) {
             postRepository.deleteById(postId);
-            return HttpStatus.OK;
+            return HttpStatus.valueOf(200);
         } else {
-            return HttpStatus.BAD_REQUEST;
+            return HttpStatus.valueOf(204);
         }
     }
 

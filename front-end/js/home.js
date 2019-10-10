@@ -1,5 +1,6 @@
-//to list all posts
+// =========== LIST ALL POSTS ==================
 const getAllPosts = function() {
+  const postsContainer = document.querySelector('.posts');
   fetch('http://localhost:8181/post/list/all', {
     headers: {
       'Authorization': 'Bearer ' + localStorage.getItem('user'),
@@ -10,7 +11,18 @@ const getAllPosts = function() {
     return response.json();
   })
   .then((response) => {
-    console.log(response);
+    for(let i = 0; i < response.length; i++) {
+      const newPost = document.createElement('div');
+      newPost.classList = 'allPosts';
+      const title = document.createElement('h2');
+      title.innerText = response[i].title;
+      newPost.appendChild(title);
+      const body = document.createElement('p');
+      body.innerText = response[i].body;
+      newPost.appendChild(body);
+      postsContainer.appendChild(newPost);
+    }
+
   })
   .catch((err) => {
     console.log(err);
@@ -37,7 +49,6 @@ const getAllPosts = function() {
         //           addComment.setAttribute("value", "add");
         //           deleteComment.setAttribute("type", "submit");
         //           deleteComment.setAttribute("value", "delete");
-        //       }
 
 const getData = function(data) {
   const title = data.title;
@@ -54,8 +65,6 @@ function updateDOM(data) {
   comment.innerText = `Comment: ${data.comment}`;
 }
 
-// const button = document.querySelector('button');
-// button.addEventListener('click', getAllPosts)
 
 //to delete comments
 function deleteComment() {

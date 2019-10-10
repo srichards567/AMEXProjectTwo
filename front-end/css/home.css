@@ -24,7 +24,7 @@ header {
     text-shadow: 1px 1px black;
 }
 
-a:hover {
+a:hover, button:hover {
   color: #f5dd9a;
 }
 

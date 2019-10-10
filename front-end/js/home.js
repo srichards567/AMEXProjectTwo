@@ -16,12 +16,18 @@ const getAllPosts = function() {
     for(let i = 0; i < response.length; i++) {
       const newPost = document.createElement('div');
       newPost.classList = 'allPosts';
+      newPost.setAttribute('postid', response[i].id);
 
       const deleteBtn = document.createElement('i');
-      deleteBtn.setAttribute("postid", response[i].id);
       deleteBtn.classList = "fa fa-times";
-      newPost.append(deleteBtn);
 
+      deleteBtn.addEventListener('click', function(event) {
+          event.preventDefault();
+            requestDeletePost(event);
+          })
+
+
+      newPost.append(deleteBtn);
 
       const title = document.createElement('h2');
       title.innerText = response[i].title;
@@ -39,7 +45,8 @@ const getAllPosts = function() {
 
 // =========== DELETE A POST ==================
 
-function requestDeletePost(id) {
+function requestDeletePost(event) {
+  const id = event.target.parentNode.getAttribute('postid');
   fetch(`http://localhost:8181/post/${id}`, {
       method: 'DELETE',
       headers: {
@@ -48,7 +55,7 @@ function requestDeletePost(id) {
           }
         })
     .then((res) => {
-      getAllPosts()
+      getAllPosts();
     })
     .catch((error) => {
     console.log(id);
@@ -236,7 +243,7 @@ function makeUserPost() {
     alert('Your post was successfuly made!');
     getAllPosts();
   })
-  .then((err) => {
+  .catch((err) => {
     console.log(err);
   })
 }

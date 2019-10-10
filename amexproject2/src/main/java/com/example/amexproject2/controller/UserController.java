@@ -50,7 +50,6 @@ public class UserController {
     }
 
     // view a user profile
-    @PutMapping("/profile")
     @GetMapping("/profile")
     public UserProfile viewUserProfile() {
         return userProfileService.getUserProfile();

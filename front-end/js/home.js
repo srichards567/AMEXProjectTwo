@@ -69,100 +69,141 @@ function deleteComment() {
 }
 
 //to list user comments
-const makeCall = function() {
-fetch(`http://localhost:8181/comment/list`)
-  .then((response) => {
-    return response.json();
-  })
-  .then((response) => {
-    const list = document.querySelector('.userComments')
-    for (let i = 0; i < response.length; i ++) {
-      const body = document.createElement('p');
-
-      document.querySelector('.userComments').appendChild(body);
-    }
-  })
-  .catch((err) => {
-    console.log(err);
-  })
-}
-
-const getData = function(data) {
-  const body = data.commentBody;
-}
+// const makeCall = function() {
+// fetch(`http://localhost:8181/comment/list`)
+//   .then((response) => {
+//     return response.json();
+//   })
+//   .then((response) => {
+//     const list = document.querySelector('.userComments')
+//     for (let i = 0; i < response.length; i ++) {
+//       const body = document.createElement('p');
+//
+//       document.querySelector('.userComments').appendChild(body);
+//     }
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   })
+// }
+//
+// const getData = function(data) {
+//   const body = data.commentBody;
+// }
 
 // =========== DOM MANIPULATION ==================
-
-function showMakeProfile() {
-  document.querySelector('.makeProfile').style.display="block";
-}
-
-function hideMakeProfile() {
-  document.querySelector('.makeProfile').style.display="none";
-  showViewProfileBtn();
-  hideCreateProfileBtn();
-}
-
-function showViewProfileBtn() {
-  document.querySelector('.viewProfileBtn').style.display="inline";
-}
-
-function hideCreateProfileBtn() {
-  document.querySelector('.createProfileBtn').style.display="none";
-}
-
-function showViewerProfile() {
-  document.querySelector('.userProfile').style.display = "block";
-  showUpdateProfileBtn();
-}
-
-function hideUserProfile() {
-  document.querySelector('.userProfile').style.display = "none";
-  document.querySelector('.updateUserProfile').style.display="none";
-}
-
-function showUpdateUserProfile() {
-  document.querySelector('.updateUserProfile').style.display="block";
-}
-
-function hideUpdateProfileBtn() {
-  document.querySelector('.updateProfileBtn').style.display="none";
-}
-
-function showUpdateProfileBtn() {
-  document.querySelector('.updateProfileBtn').style.display="inline";
-}
+//
+// function showMakeProfile() {
+//   document.querySelector('.makeProfile').style.display="inline";
+// }
+//
+// function hideMakeProfile() {
+//   document.querySelector('.makeProfile').style.display="none";
+//   showViewProfileBtn();
+//   hideCreateProfileBtn();
+// }
+//
+// function showViewProfileBtn() {
+//   document.querySelector('.viewProfileBtn').style.display="inline";
+// }
+//
+// function hideCreateProfileBtn() {
+//   document.querySelector('.createProfileBtn').style.display="none";
+// }
+//
+// function showViewerProfile() {
+//   document.querySelector('.userProfile').style.display = "block";
+//   showUpdateProfileBtn();
+// }
+//
+// function hideUserProfile() {
+//   document.querySelector('.userProfile').style.display = "none";
+//   document.querySelector('.updateUserProfile').style.display="none";
+// }
+//
+// function showUpdateUserProfile() {
+//   document.querySelector('.updateUserProfile').style.display="block";
+// }
+//
+// function hideUpdateProfileBtn() {
+//   document.querySelector('.updateProfileBtn').style.display="none";
+// }
+//
+// function showUpdateProfileBtn() {
+//   document.querySelector('.updateProfileBtn').style.display="inline";
+// }
 
 // =========== CREATE A PROFILE ==================
 function postUserProfile() {
-  const altEmail = document.querySelector('.altEmail');
-  const mobile = document.querySelector('.mobile');
-  const address = document.querySelector('.address');
+  const altEmail = document.querySelector('.makeProfileEmail').value;
+  const mobile = document.querySelector('.makeProfileMobile').value;
+  const address = document.querySelector('.makeProfileAddress').value;
 
-
-  fetch('localhost:8181/profile', {
+  fetch ('http://localhost:8181/profile', {
     method: 'POST',
-    headers: {
-      "Authorization": "Bearer " + localStorage.getItem('user'),
-      "Content-Type": "application/json"
+    headers : {
+      "Authorization" : "Bearer " + localStorage.getItem('user'),
+      "Content-Type" : "application/json"
     },
     body: JSON.stringify({
-        additionalEmail: altEmail.value,
-        mobile: mobile.value,
-        address: address.value
+      mobile: mobile,
+      address: address,
+      altEmail: altEmail
     })
   })
-  .then((res) =>{
-    alert('You have successfully created a profile');
-    document.querySelector('.fetchedUserProfile').innerText = res;
-    //displayProfile();
+  .then((res) => {
+    console.log(res);
   })
   .catch((error) => {
-  console.log(error)
+    console.log(error);
   })
 }
+
+function getUserProfile() {
+  const userProfile = document.querySelector('.updateUserProfile');
+
+  fetch ('http://localhost:8181/profile', {
+    method: 'GET',
+    headers : {
+      "Authorization" : "Bearer " + localStorage.getItem('user'),
+      "Content-Type" : "application/json"
+    }
+  })
+  .then((res) => {
+    userProfile.innerText = res.json();
+  })
+  .catch((error) => {
+    console.log(error);
+  })
+}
+// function postUserProfile() {
+//   const altEmail = document.querySelector('.altEmail');
+//   const mobile = document.querySelector('.mobile');
+//   const address = document.querySelector('.address');
+//
+//   fetch('http://localhost:8181/profile', {
+//     mode: 'no-cors',
+//     method: 'POST',
+//     headers: {
+//       "Authorization": "Bearer " + localStorage.getItem('user'),
+//       "Content-Type": "application/json"
+//     },
+//     body: JSON.stringify({
+//         altEmail: altEmail.value,
+//         mobile: mobile.value,
+//         address: address.value
+//     })
+//   })
+//   .then((res) =>{
+//     alert('You have successfully created a profile');
+//     //document.querySelector('.fetchedUserProfile').innerText = res;
+//     //displayProfile();
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   })
+// }
 
 // =========== UPDATE A PROFILE ==================
 // =========== SEE USER POSTS ====================
 // =========== SEE USER COMMENTS =================
-

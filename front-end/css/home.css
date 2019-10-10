@@ -70,9 +70,14 @@ header {
   margin-top: 2px;
 }
 
-/* .makeProfile, .userProfile {
+.userProfile {
+  background: white;
   color: black;
+  width: 100px;
+  height: 100px;
 }
+
+/*
 
 .viewProfileBtn, .makeProfile, .userProfile, .updateUserProfile {
   display: none;

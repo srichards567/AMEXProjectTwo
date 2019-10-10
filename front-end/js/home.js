@@ -1,36 +1,51 @@
 //to list all posts
-const makeCall = function() {
-  fetch(`http://localhost:8181/post/list/all`)
-    .then((response) => {
-      return response.json();
-    })
-    .then((response) => {
-      const list = document.querySelector('.allPosts')
-      for (let i = 0; i < response.length; i++) {
-        const title = document.createElement('h2');
-        const body = document.createElement('p');
-        const comment = document.createElement('input');
-        const addComment = document.createElement('button');
-        const deleteComment = document.createElement('button');
-        const deletePost = document.createElement('button');
-
-        document.querySelector('.allPosts').appendChild(title);
-        document.querySelector('.allPosts').appendChild(body);
-        document.querySelector('.allPosts').appendChild(comment);
-        document.querySelector('.allPost').appendChild(addComment);
-        document.querySelector('.allPosts').appendChild(deleteComment);
-        document.querySelector('.allPosts').appendChild(deletePost);
-
-        addComment.setAttribute("type", "submit");
-        addComment.setAttribute("value", "add");
-        deleteComment.setAttribute("type", "submit");
-        deleteComment.setAttribute("value", "delete");
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    })
+const getAllPosts = function() {
+  const postsContainer = document.querySelector('.posts');
+  fetch('http://localhost:8181/post/list/all', {
+    headers: {
+      'Authorization': 'Bearer ' + localStorage.getItem('user'),
+      'Content-Type': 'application/json'
+    }
+  })
+  .then((response) => {
+    return response.json();
+  })
+  .then((response) => {
+    for(let i = 0; i < response.length; i++) {
+      const newPost = document.createElement('div');
+      newPost.classList = 'allPosts';
+      const title = document.createElement('h2');
+      title.innerText = response[i].title;
+      newPost.appendChild(title);
+      const body = document.createElement('p');
+      body.innerText = response[i].body;
+      newPost.appendChild(body);
+      postsContainer.appendChild(newPost);
+    }
+  })
+  .catch((err) => {
+    console.log(err);
+  })
 }
+        //         const list = document.querySelector('.allPosts')
+
+        //           const comment = document.createElement('input');
+        //           const addComment = document.createElement('button');
+        //           const deleteComment = document.createElement('button');
+        //           const deletePost = document.createElement('button');
+        //
+
+        //           document.querySelector('.allPosts').appendChild(comment);
+        //           document.querySelector('.allPost').appendChild(addComment);
+        //           document.querySelector('.allPosts').appendChild(deleteComment);
+        //           document.querySelector('.allPosts').appendChild(deletePost);
+        //
+        //           addComment.setAttribute("type", "submit");
+        //           addComment.setAttribute("value", "add");
+        //           deleteComment.setAttribute("type", "submit");
+        //           deleteComment.setAttribute("value", "delete");
+
+
 
 const getData = function(data) {
   const title = data.title;
@@ -47,15 +62,16 @@ function updateDOM(data) {
   comment.innerText = `Comment: ${data.comment}`;
 }
 
-const button = document.querySelector('button');
-button.addEventListener('click', makeCall)
 
 //to delete comments
 function deleteComment() {
   fetch(`http://localhost:8181/comment/{comment_id}`, {
     method: 'DELETE',
-  },
-)
+    headers: {
+      "Authorization" : "Bearer " + localStorage.getItem('user'),
+      "Content-Type" : "application/json"
+    },
+  })
     .then((response) => {
       return response.json();
     })
@@ -69,6 +85,27 @@ function deleteComment() {
 }
 
 //to list user comments
+const makeCall1 = function() {
+fetch(`http://localhost:8181/comment/list`)
+  .then((response) => {
+    return response.json();
+  })
+  .then((response) => {
+    const list = document.querySelector('.userComments')
+    for (let i = 0; i < response.length; i ++) {
+      const body = document.createElement('p');
+
+      document.querySelector('.userComments').appendChild(body);
+    }
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+}
+
+const getData1 = function(data) {
+  const body = data.commentBody;
+}
 // const makeCall = function() {
 // fetch(`http://localhost:8181/comment/list`)
 //   .then((response) => {
@@ -133,6 +170,11 @@ function deleteComment() {
 //   document.querySelector('.updateProfileBtn').style.display="inline";
 // }
 
+// =========== MANIPULATE DOM WITH PROMISE VALUES ==================
+function manipulateDom(htmlElementId, res) {
+  const targetElement = document.getElementById(htmlElementId);
+
+}
 // =========== CREATE A PROFILE ==================
 function postUserProfile() {
   const altEmail = document.querySelector('.makeProfileEmail').value;
@@ -152,6 +194,7 @@ function postUserProfile() {
     })
   })
   .then((res) => {
+    alert('You have successfully created a profile');
     console.log(res);
   })
   .catch((error) => {
@@ -159,50 +202,39 @@ function postUserProfile() {
   })
 }
 
+// =========== GET A PROFILE ==================
 function getUserProfile() {
-  const userProfile = document.querySelector('.updateUserProfile');
+  const userProfile = document.querySelector('.userProfile');
 
   fetch ('http://localhost:8181/profile', {
-    method: 'GET',
     headers : {
       "Authorization" : "Bearer " + localStorage.getItem('user'),
       "Content-Type" : "application/json"
     }
   })
   .then((res) => {
-    userProfile.innerText = res.json();
+    return(res.json());
+  })
+  .then((res) => {
+    const userAltEmail = document.createElement('p');
+    userAltEmail.innerText = "Alt Email: " + res.altEmail;
+
+    const userAddress = document.createElement('p');
+    userAddress.innerText = "Address: " + res.address;
+
+    const userMobile = document.createElement('p');
+    userMobile.innerText = "Mobile: " + res.mobile;
+
+    userProfile.appendChild(userAltEmail);
+    userProfile.appendChild(userAddress);
+    userProfile.appendChild(userMobile);
   })
   .catch((error) => {
     console.log(error);
   })
 }
-// function postUserProfile() {
-//   const altEmail = document.querySelector('.altEmail');
-//   const mobile = document.querySelector('.mobile');
-//   const address = document.querySelector('.address');
-//
-//   fetch('http://localhost:8181/profile', {
-//     mode: 'no-cors',
-//     method: 'POST',
-//     headers: {
-//       "Authorization": "Bearer " + localStorage.getItem('user'),
-//       "Content-Type": "application/json"
-//     },
-//     body: JSON.stringify({
-//         altEmail: altEmail.value,
-//         mobile: mobile.value,
-//         address: address.value
-//     })
-//   })
-//   .then((res) =>{
-//     alert('You have successfully created a profile');
-//     //document.querySelector('.fetchedUserProfile').innerText = res;
-//     //displayProfile();
-//   })
-//   .catch((error) => {
-//     console.log(error);
-//   })
-// }
+
+
 
 // =========== UPDATE A PROFILE ==================
 // =========== SEE USER POSTS ====================

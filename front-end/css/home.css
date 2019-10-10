@@ -2,12 +2,12 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #a5bbd9;
-
 }
 
 .contents {
     background-color: #a5bbd9;
 }
+
 .navbar {
     display: flex;
     justify-content: space-around;
@@ -68,15 +68,12 @@ header {
   margin: 0 auto;
   margin-bottom: 5px;
   margin-top: 2px;
-
-  
-.profile>button{
-  color: black;
 }
 
-.makeProfile, .userProfile {
+/* .makeProfile, .userProfile {
   color: black;
 }
 
 .viewProfileBtn, .makeProfile, .userProfile, .updateUserProfile {
   display: none;
+} */

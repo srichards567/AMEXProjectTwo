@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
 
 @Configuration
 @EnableWebSecurity
@@ -40,9 +41,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                // .antMatchers("/token/**", "/signup/**", "/login/**").permitAll()
                 .antMatchers("/signup/**", "/login/**").permitAll()
                 .antMatchers("/comment/**", "/post/**", "/user/**", "/profile/**").authenticated()
+//                .antMatchers("/comment/**", "/post/**", "/user/**", "/profile/**").permitAll()
+
                 .and()
                 .httpBasic();
 
+        http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }
 

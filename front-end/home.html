@@ -22,11 +22,36 @@
       <div class="posts">
         <button onclick="getAllPosts()">See All Posts</button>
 
+<<<<<<< HEAD
 
 
+=======
+        </div>
+>>>>>>> 173e1eae4a1e0b09b3d2550eb5a318e25b8728ce
       </div>
       <div class="profile">
+        <button type="submit" class="createProfileBtn">Create Profile</button><br/>
+        <button type="submit" class="viewProfileBtn" onclick="getUserProfile()">View Profile</button><br/>
+        <button type="submit" class="seeMyPostsBtn">See my posts</button><br/>
+        <button type="submit" class="viewMyCmntsBtn">See my comments</button><br/>
 
+          <div class= "makeProfile">
+            Mobile: <input class="makeProfileMobile" type="text"></input><br/>
+            Address: <input class="makeProfileAddress" type="text"></input><br/>
+            Second Email: <input class="makeProfileEmail" type="text"></input>
+            <button type="submit" onclick="postUserProfile()">Submit</input>
+          </div>
+
+          <div class="userProfile">
+            <div class ="fetchedUserProfile"></div>
+            <button type="submit" class= "updateProfileBtn" >Update Profile</button><br/>
+            <div class="updateUserProfile">
+              Mobile: <input class="updateMobile" type="text"/><br/>
+              Address: <input class="updateAddress" type="text"/><br/>
+              Second Email: <input class="updateAltEmail" type="text"/>
+              <button type="submit" class="updateUserProfileBtn">Submit</button>
+            </div>
+          </div>
       </div>
     </div>
     <!---

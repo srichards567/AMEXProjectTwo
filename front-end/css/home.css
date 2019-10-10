@@ -26,6 +26,9 @@ header {
 
 a:hover {
   color: #f5dd9a;
+}
+
+.postsDiv {
   width: 800px;
   height: 840px;
   border: rgba(0,0,0,0.1);

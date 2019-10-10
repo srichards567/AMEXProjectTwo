@@ -70,6 +70,11 @@ header {
   margin-top: 2px;
 }
 
+.fetchedUserProfile {
+  color: black;
+  width: 150px;
+  height: 150px;
+}
 /* .makeProfile, .userProfile {
   color: black;
 }

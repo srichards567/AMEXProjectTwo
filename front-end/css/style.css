@@ -28,8 +28,15 @@ header>h1 {
     text-shadow: 2px 2px black;
 }
 
+h1:hover {
+  color: #f5dd9a;
+}
 .navbar a {
     text-decoration: none !important;
     color: white;
     text-shadow: 1px 1px black;
+}
+
+.navbar a:hover {
+  color: #f5dd9a;
 }

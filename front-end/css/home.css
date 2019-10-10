@@ -24,7 +24,8 @@ header {
     text-shadow: 1px 1px black;
 }
 
-.postsDiv {
+a:hover {
+  color: #f5dd9a;
   width: 800px;
   height: 840px;
   border: rgba(0,0,0,0.1);
@@ -78,6 +79,10 @@ header {
   flex-direction: column;
 }
 
+button:hover {
+  color: blue;
+}
+
 .contents {
   display: flex;
   justify-content: center;
@@ -90,6 +95,7 @@ header {
   background: white;
   margin: 0 auto;
   margin-bottom: 10px;
+  box-shadow: 8px 7px #adaca8;
   /* margin-bottom: 10px; */
 }
 
@@ -106,6 +112,9 @@ button {
   color: black;
 }
 
+.posts button:hover {
+  color: blue;
+}
 
 .fetchedUserProfile {
   color: black;

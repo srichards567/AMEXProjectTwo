@@ -1,4 +1,4 @@
-//to list all posts
+// =========== LIST ALL POSTS ==================
 const getAllPosts = function() {
   const postsContainer = document.querySelector('.posts');
   fetch('http://localhost:8181/post/list/all', {
@@ -28,6 +28,7 @@ const getAllPosts = function() {
     console.log(err);
   })
 }
+
         //         const list = document.querySelector('.allPosts')
         //         for (let i = 0; i < response.length; i++) {
         //           const title = document.createElement('h2');
@@ -48,8 +49,6 @@ const getAllPosts = function() {
         //           addComment.setAttribute("value", "add");
         //           deleteComment.setAttribute("type", "submit");
         //           deleteComment.setAttribute("value", "delete");
-
-
 
 const getData = function(data) {
   const title = data.title;
@@ -177,8 +176,8 @@ const getData1 = function(data) {
 // =========== MANIPULATE DOM WITH PROMISE VALUES ==================
 function manipulateDom(htmlElementId, res) {
   const targetElement = document.getElementById(htmlElementId);
-
 }
+
 // =========== CREATE A PROFILE ==================
 function postUserProfile() {
   const altEmail = document.querySelector('.makeProfileEmail').value;

@@ -25,7 +25,7 @@ header {
 }
 
 a:hover {
-  color: #f5dd9a;
+  color: #eb7434;
 }
 
 .postsDiv {
@@ -83,7 +83,7 @@ a:hover {
 }
 
 button:hover {
-  color: blue;
+  color: #eb7434;
 }
 
 .contents {
@@ -116,7 +116,7 @@ button {
 }
 
 .posts button:hover {
-  color: blue;
+  color: #eb7434;
 }
 
 .fetchedUserProfile {

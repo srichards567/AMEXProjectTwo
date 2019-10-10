@@ -28,6 +28,9 @@ header {
     text-shadow: 1px 1px black;
 }
 
+a:hover {
+  color: #f5dd9a;
+}
 .posts {
   width: 800px;
   height: 600px;
@@ -47,6 +50,10 @@ header {
   background: #f5f5f5;
 }
 
+button:hover {
+  color: blue;
+}
+
 .contents {
   display: flex;
   justify-content: center;
@@ -58,6 +65,7 @@ header {
   border: 2px solid black;
   margin: 0 auto;
   margin-bottom: 10px;
+  box-shadow: 8px 7px #adaca8;
   /* margin-bottom: 10px; */
 }
 
@@ -70,6 +78,9 @@ header {
   margin-top: 2px;
 }
 
+.posts button:hover {
+  color: blue;
+}
 
 .fetchedUserProfile {
   color: black;

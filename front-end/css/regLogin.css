@@ -13,6 +13,10 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+.navbar a:hover {
+  color: #f5dd9a;
+}
+
 header {
   margin-top: 20px;
   margin-bottom: 20px;

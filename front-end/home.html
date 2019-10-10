@@ -32,7 +32,7 @@
 
       <div class="profile">
         <button type="submit" class="createProfileBtn">Create Profile</button><br/>
-        <button type="submit" class="viewProfileBtn">View Profile</button><br/>
+        <button type="submit" class="viewProfileBtn" onclick="getUserProfile()">View Profile</button><br/>
         <button type="submit" class="seeMyPostsBtn">See my posts</button><br/>
         <button type="submit" class="viewMyCmntsBtn">See my comments</button><br/>
 
@@ -43,9 +43,8 @@
             <button type="submit" onclick="postUserProfile()">Submit</input>
           </div>
 
-          <div class="userProfile" style="display:none">
-            <div class ="fetchedUserProfile">
-            </div>
+          <div class="userProfile">
+            <div class ="fetchedUserProfile"></div>
             <button type="submit" class= "updateProfileBtn" >Update Profile</button><br/>
             <div class="updateUserProfile">
               Mobile: <input class="updateMobile" type="text"/><br/>

@@ -5,14 +5,13 @@ const makeCall = function() {
       headers: {
         'Authorization': 'Bearer ' + localStorage.getItem('user'),
         'Content-Type': 'application/json'
-      },
+      }
     })
         .then((res) => {
             return res.json();
         })
         .then((res) => {
             console.log(res);
-            getData(res.results[0]);
         })
         .catch((err) => {
             console.log(err);
@@ -183,6 +182,11 @@ const getData1 = function(data) {
 //   document.querySelector('.updateProfileBtn').style.display="inline";
 // }
 
+// =========== MANIPULATE DOM WITH PROMISE VALUES ==================
+function manipulateDom(htmlElementId, res) {
+  const targetElement = document.getElementById(htmlElementId);
+
+}
 // =========== CREATE A PROFILE ==================
 function postUserProfile() {
   const altEmail = document.querySelector('.makeProfileEmail').value;
@@ -209,8 +213,9 @@ function postUserProfile() {
   })
 }
 
+// =========== GET A PROFILE ==================
 function getUserProfile() {
-  const userProfile = document.querySelector('.updateUserProfile');
+  const userProfile = document.querySelector('.fetchedUserProfile');
 
   fetch ('http://localhost:8181/profile', {
     method: 'GET',
@@ -220,39 +225,17 @@ function getUserProfile() {
     }
   })
   .then((res) => {
-    userProfile.innerText = res.json();
+    return res.json();
+  })
+  .then((res) => {
+    console.log(res);
   })
   .catch((error) => {
     console.log(error);
   })
 }
-// function postUserProfile() {
-//   const altEmail = document.querySelector('.altEmail');
-//   const mobile = document.querySelector('.mobile');
-//   const address = document.querySelector('.address');
-//
-//   fetch('http://localhost:8181/profile', {
-//     mode: 'no-cors',
-//     method: 'POST',
-//     headers: {
-//       "Authorization": "Bearer " + localStorage.getItem('user'),
-//       "Content-Type": "application/json"
-//     },
-//     body: JSON.stringify({
-//         altEmail: altEmail.value,
-//         mobile: mobile.value,
-//         address: address.value
-//     })
-//   })
-//   .then((res) =>{
-//     alert('You have successfully created a profile');
-//     //document.querySelector('.fetchedUserProfile').innerText = res;
-//     //displayProfile();
-//   })
-//   .catch((error) => {
-//     console.log(error);
-//   })
-// }
+
+
 
 // =========== UPDATE A PROFILE ==================
 // =========== SEE USER POSTS ====================

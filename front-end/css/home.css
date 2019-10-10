@@ -3,7 +3,14 @@ body {
   flex-direction: column;
   background-color: #a5bbd9;
   font-family: 'Montserrat', sans-serif;
+  /* background-image: url("../images/transparent-lace.png");
+  background-repeat: repeat-y;
+  background-position: left;
+  background-size: 350px 400px; */
+  background-image: url("../images/teacup-vintage.jpg");
 }
+
+
 
 .navbar {
     display: flex;

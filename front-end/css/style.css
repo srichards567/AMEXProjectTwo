@@ -2,6 +2,9 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #a5bbd9;
+  background: url("../images/victorian-dining-table.jpeg");
+  background-size: cover;
+  background-position: right;
 }
 
 .navbar {
@@ -20,12 +23,12 @@ header {
 
 header>h1 {
     font-family: Sacramento, sans-serif;
-    font-size: 8rem;
+    font-size: 10rem;
     text-align: center;
     color: white;
     justify-content: center;
     padding-top: 10%;
-    text-shadow: 2px 2px black;
+    text-shadow: 5px 5px black;
 }
 
 h1:hover {

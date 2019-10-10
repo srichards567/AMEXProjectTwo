@@ -16,21 +16,7 @@ const getAllPosts = function() {
     console.log(err);
   })
 }
-const makeCall = function() {
 
-    fetch('http://localhost:8181/post/list/all', {
-//       // mode: 'no-cors',
-      headers: {
-        'Authorization': 'Bearer ' + localStorage.getItem('user'),
-        'Content-Type': 'application/json'
-      }
-    })
-        .then((response) => {
-            return response.json();
-        })
-
-        .then((response) => {
-          console.log(response);
         //         const list = document.querySelector('.allPosts')
         //         for (let i = 0; i < response.length; i++) {
         //           const title = document.createElement('h2');
@@ -52,53 +38,6 @@ const makeCall = function() {
         //           deleteComment.setAttribute("type", "submit");
         //           deleteComment.setAttribute("value", "delete");
         //       }
-
-        .then((res) => {
-            console.log(res);
-        })
-        .catch((err) => {
-            console.log(err);
-        })
-}
-// const makeCall = function() {
-//   fetch('http://localhost:8181/post/list/all', {
-//     // mode: 'no-cors',
-//     headers: {
-//       'Authorization' : 'Bearer ' + localStorage.getItem('user'),
-//       'Content-Type' : 'application/json'
-//     },
-//   })
-//     .then((response) => {
-//       return response.json();
-//     })
-//     .then((response) => {
-      // console.log("hello")
-      // const list = document.querySelector('.allPosts')
-      // for (let i = 0; i < response.length; i++) {
-      //   const title = document.createElement('h2');
-      //   const body = document.createElement('p');
-      //   const comment = document.createElement('input');
-      //   const addComment = document.createElement('button');
-      //   const deleteComment = document.createElement('button');
-      //   const deletePost = document.createElement('button');
-      //
-      //   document.querySelector('.allPosts').appendChild(title);
-      //   document.querySelector('.allPosts').appendChild(body);
-      //   document.querySelector('.allPosts').appendChild(comment);
-      //   document.querySelector('.allPost').appendChild(addComment);
-      //   document.querySelector('.allPosts').appendChild(deleteComment);
-      //   document.querySelector('.allPosts').appendChild(deletePost);
-      //
-      //   addComment.setAttribute("type", "submit");
-      //   addComment.setAttribute("value", "add");
-      //   deleteComment.setAttribute("type", "submit");
-      //   deleteComment.setAttribute("value", "delete");
-
-//     }
-//     .catch((err) => {
-//       console.log(err)
-//     })
-// }
 
 const getData = function(data) {
   const title = data.title;
@@ -228,8 +167,8 @@ const getData1 = function(data) {
 // =========== MANIPULATE DOM WITH PROMISE VALUES ==================
 function manipulateDom(htmlElementId, res) {
   const targetElement = document.getElementById(htmlElementId);
-
 }
+
 // =========== CREATE A PROFILE ==================
 function postUserProfile() {
   const altEmail = document.querySelector('.makeProfileEmail').value;

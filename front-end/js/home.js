@@ -22,7 +22,6 @@ const getAllPosts = function() {
       newPost.appendChild(body);
       postsContainer.appendChild(newPost);
     }
-
   })
   .catch((err) => {
     console.log(err);
@@ -195,6 +194,7 @@ function postUserProfile() {
     })
   })
   .then((res) => {
+    alert('You have successfully created a profile');
     console.log(res);
   })
   .catch((error) => {
@@ -204,20 +204,30 @@ function postUserProfile() {
 
 // =========== GET A PROFILE ==================
 function getUserProfile() {
-  const userProfile = document.querySelector('.fetchedUserProfile');
+  const userProfile = document.querySelector('.userProfile');
 
   fetch ('http://localhost:8181/profile', {
-    method: 'GET',
     headers : {
       "Authorization" : "Bearer " + localStorage.getItem('user'),
       "Content-Type" : "application/json"
     }
   })
   .then((res) => {
-    return res.json();
+    return(res.json());
   })
   .then((res) => {
-    console.log(res);
+    const userAltEmail = document.createElement('p');
+    userAltEmail.innerText = "Alt Email: " + res.altEmail;
+
+    const userAddress = document.createElement('p');
+    userAddress.innerText = "Address: " + res.address;
+
+    const userMobile = document.createElement('p');
+    userMobile.innerText = "Mobile: " + res.mobile;
+
+    userProfile.appendChild(userAltEmail);
+    userProfile.appendChild(userAddress);
+    userProfile.appendChild(userMobile);
   })
   .catch((error) => {
     console.log(error);

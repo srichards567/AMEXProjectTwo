@@ -33,7 +33,6 @@ header {
 
 a:hover, button:hover {
   color: #f5dd9a;
-}
 
 .postsDiv {
   width: 800px;
@@ -90,7 +89,7 @@ a:hover, button:hover {
 }
 
 button:hover {
-  color: blue;
+  color: #eb7434;
 }
 
 .contents {
@@ -123,7 +122,7 @@ button {
 }
 
 .posts button:hover {
-  color: blue;
+  color: #eb7434;
 }
 
 .fetchedUserProfile {

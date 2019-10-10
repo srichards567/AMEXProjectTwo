@@ -32,7 +32,7 @@ header>h1 {
 }
 
 h1:hover {
-  color: #f5dd9a;
+  color: #eb7434;
 }
 .navbar a {
     text-decoration: none !important;
@@ -41,5 +41,5 @@ h1:hover {
 }
 
 .navbar a:hover {
-  color: #f5dd9a;
+  color: #eb7434;
 }

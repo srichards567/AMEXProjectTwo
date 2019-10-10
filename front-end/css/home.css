@@ -3,7 +3,14 @@ body {
   flex-direction: column;
   background-color: #a5bbd9;
   font-family: 'Montserrat', sans-serif;
+  /* background-image: url("../images/transparent-lace.png");
+  background-repeat: repeat-y;
+  background-position: left;
+  background-size: 350px 400px; */
+  background-image: url("../images/teacup-vintage.jpg");
 }
+
+
 
 .navbar {
     display: flex;
@@ -24,9 +31,8 @@ header {
     text-shadow: 1px 1px black;
 }
 
-a:hover {
-  color: #eb7434;
-}
+a:hover, button:hover {
+  color: #f5dd9a;
 
 .postsDiv {
   width: 800px;
@@ -141,5 +147,5 @@ button {
 
 i {
   float: right;
-  font-size: 20px;
+  width: 20px;
 }

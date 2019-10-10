@@ -12,15 +12,28 @@ const getAllPosts = function() {
     return response.json();
   })
   .then((response) => {
+
+
     postsContainer.innerHTML = "";
     for(let i = 0; i < response.length; i++) {
+      if (response[i].user.username == localStorage.getItem('username')) {
+        localStorage.setItem('userId', response[i].user.id);
+      }
       const newPost = document.createElement('div');
       newPost.classList = 'allPosts';
+      newPost.setAttribute('postid', response[i].id);
 
+      if (response[i].user.id == localStorage.getItem('userId')
+    || response[i].user == localStorage.getItem('userId')) {
       const deleteBtn = document.createElement('i');
-      deleteBtn.setAttribute("postid", response[i].id);
       deleteBtn.classList = "fa fa-times";
+
+      deleteBtn.addEventListener('click', function(event) {
+          event.preventDefault();
+            requestDeletePost(event);
+          })
       newPost.append(deleteBtn);
+      }
 
 
       const title = document.createElement('h2');
@@ -39,7 +52,8 @@ const getAllPosts = function() {
 
 // =========== DELETE A POST ==================
 
-function requestDeletePost(id) {
+function requestDeletePost(event) {
+  const id = event.target.parentNode.getAttribute('postid');
   fetch(`http://localhost:8181/post/${id}`, {
       method: 'DELETE',
       headers: {
@@ -48,10 +62,10 @@ function requestDeletePost(id) {
           }
         })
     .then((res) => {
-      getAllPosts()
+      getAllPosts();
     })
     .catch((error) => {
-    console.log(id);
+      console.log(error);
     })
 }
 
@@ -236,7 +250,7 @@ function makeUserPost() {
     alert('Your post was successfuly made!');
     getAllPosts();
   })
-  .then((err) => {
+  .catch((err) => {
     console.log(err);
   })
 }

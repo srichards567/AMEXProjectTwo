@@ -1,36 +1,62 @@
 //to list all posts
 const makeCall = function() {
-  fetch(`http://localhost:8181/post/list/all`)
-    .then((response) => {
-      return response.json();
+    fetch('http://localhost:8181/post/list/all', {
+      // mode: 'no-cors',
+      headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('user'),
+        'Content-Type': 'application/json'
+      },
     })
-    .then((response) => {
-      const list = document.querySelector('.allPosts')
-      for (let i = 0; i < response.length; i++) {
-        const title = document.createElement('h2');
-        const body = document.createElement('p');
-        const comment = document.createElement('input');
-        const addComment = document.createElement('button');
-        const deleteComment = document.createElement('button');
-        const deletePost = document.createElement('button');
-
-        document.querySelector('.allPosts').appendChild(title);
-        document.querySelector('.allPosts').appendChild(body);
-        document.querySelector('.allPosts').appendChild(comment);
-        document.querySelector('.allPost').appendChild(addComment);
-        document.querySelector('.allPosts').appendChild(deleteComment);
-        document.querySelector('.allPosts').appendChild(deletePost);
-
-        addComment.setAttribute("type", "submit");
-        addComment.setAttribute("value", "add");
-        deleteComment.setAttribute("type", "submit");
-        deleteComment.setAttribute("value", "delete");
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    })
+        .then((res) => {
+            return res.json();
+        })
+        .then((res) => {
+            console.log(res);
+            getData(res.results[0]);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
 }
+// const makeCall = function() {
+//   fetch('http://localhost:8181/post/list/all', {
+//     mode: 'no-cors',
+//     headers: {
+//       'Authorization' : 'Bearer ' + localStorage.getItem('user'),
+//       'Content-Type' : 'application/json'
+//     },
+//   })
+//     .then((response) => {
+//       return response.json();
+//     })
+//     .then((response) => {
+//       console.log("hello")
+      // const list = document.querySelector('.allPosts')
+      // for (let i = 0; i < response.length; i++) {
+      //   const title = document.createElement('h2');
+      //   const body = document.createElement('p');
+      //   const comment = document.createElement('input');
+      //   const addComment = document.createElement('button');
+      //   const deleteComment = document.createElement('button');
+      //   const deletePost = document.createElement('button');
+      //
+      //   document.querySelector('.allPosts').appendChild(title);
+      //   document.querySelector('.allPosts').appendChild(body);
+      //   document.querySelector('.allPosts').appendChild(comment);
+      //   document.querySelector('.allPost').appendChild(addComment);
+      //   document.querySelector('.allPosts').appendChild(deleteComment);
+      //   document.querySelector('.allPosts').appendChild(deletePost);
+      //
+      //   addComment.setAttribute("type", "submit");
+      //   addComment.setAttribute("value", "add");
+      //   deleteComment.setAttribute("type", "submit");
+      //   deleteComment.setAttribute("value", "delete");
+
+//     })
+//     .catch((err) => {
+//       console.log(err)
+//     })
+// }
 
 const getData = function(data) {
   const title = data.title;
@@ -54,8 +80,11 @@ button.addEventListener('click', makeCall)
 function deleteComment() {
   fetch(`http://localhost:8181/comment/{comment_id}`, {
     method: 'DELETE',
-  },
-)
+    headers: {
+      "Authorization" : "Bearer " + localStorage.getItem('user'),
+      "Content-Type" : "application/json"
+    },
+  })
     .then((response) => {
       return response.json();
     })
@@ -69,7 +98,7 @@ function deleteComment() {
 }
 
 //to list user comments
-const makeCall = function() {
+const makeCall1 = function() {
 fetch(`http://localhost:8181/comment/list`)
   .then((response) => {
     return response.json();
@@ -87,7 +116,7 @@ fetch(`http://localhost:8181/comment/list`)
   })
 }
 
-const getData = function(data) {
+const getData1 = function(data) {
   const body = data.commentBody;
 }
 
@@ -165,4 +194,3 @@ function postUserProfile() {
 // =========== UPDATE A PROFILE ==================
 // =========== SEE USER POSTS ====================
 // =========== SEE USER COMMENTS =================
-

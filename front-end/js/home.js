@@ -1,18 +1,56 @@
 //to list all posts
+const getAllPosts = function() {
+  fetch('http://localhost:8181/post/list/all', {
+    headers: {
+      'Authorization': 'Bearer ' + localStorage.getItem('user'),
+      'Content-Type': 'application/json'
+    }
+  })
+  .then((response) => {
+    return response.json();
+  })
+  .then((response) => {
+    console.log(response);
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+}
 const makeCall = function() {
+
     fetch('http://localhost:8181/post/list/all', {
-      // mode: 'no-cors',
+//       // mode: 'no-cors',
       headers: {
         'Authorization': 'Bearer ' + localStorage.getItem('user'),
         'Content-Type': 'application/json'
       },
     })
-        .then((res) => {
-            return res.json();
+        .then((response) => {
+            return response.json();
         })
-        .then((res) => {
-            console.log(res);
-            getData(res.results[0]);
+        .then((response) => {
+          console.log(response);
+        //         const list = document.querySelector('.allPosts')
+        //         for (let i = 0; i < response.length; i++) {
+        //           const title = document.createElement('h2');
+        //           const body = document.createElement('p');
+        //           const comment = document.createElement('input');
+        //           const addComment = document.createElement('button');
+        //           const deleteComment = document.createElement('button');
+        //           const deletePost = document.createElement('button');
+        //
+        //           document.querySelector('.allPosts').appendChild(title);
+        //           document.querySelector('.allPosts').appendChild(body);
+        //           document.querySelector('.allPosts').appendChild(comment);
+        //           document.querySelector('.allPost').appendChild(addComment);
+        //           document.querySelector('.allPosts').appendChild(deleteComment);
+        //           document.querySelector('.allPosts').appendChild(deletePost);
+        //
+        //           addComment.setAttribute("type", "submit");
+        //           addComment.setAttribute("value", "add");
+        //           deleteComment.setAttribute("type", "submit");
+        //           deleteComment.setAttribute("value", "delete");
+        //       }
         })
         .catch((err) => {
             console.log(err);
@@ -20,7 +58,7 @@ const makeCall = function() {
 }
 // const makeCall = function() {
 //   fetch('http://localhost:8181/post/list/all', {
-//     mode: 'no-cors',
+//     // mode: 'no-cors',
 //     headers: {
 //       'Authorization' : 'Bearer ' + localStorage.getItem('user'),
 //       'Content-Type' : 'application/json'
@@ -30,7 +68,7 @@ const makeCall = function() {
 //       return response.json();
 //     })
 //     .then((response) => {
-//       console.log("hello")
+      // console.log("hello")
       // const list = document.querySelector('.allPosts')
       // for (let i = 0; i < response.length; i++) {
       //   const title = document.createElement('h2');
@@ -52,7 +90,7 @@ const makeCall = function() {
       //   deleteComment.setAttribute("type", "submit");
       //   deleteComment.setAttribute("value", "delete");
 
-//     })
+//     }
 //     .catch((err) => {
 //       console.log(err)
 //     })
@@ -73,8 +111,8 @@ function updateDOM(data) {
   comment.innerText = `Comment: ${data.comment}`;
 }
 
-const button = document.querySelector('button');
-button.addEventListener('click', makeCall)
+// const button = document.querySelector('button');
+// button.addEventListener('click', getAllPosts)
 
 //to delete comments
 function deleteComment() {

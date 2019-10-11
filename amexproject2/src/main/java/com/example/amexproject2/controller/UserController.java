@@ -62,11 +62,8 @@ public class UserController {
         return userProfileService.createUserProfile(newUserProfile);
     }
 
-//    @GetMapping("/token/{username}")
-//    public String getToken(@PathVariable String username) {
-//        if (userService.getToken(username) == null || userService.getToken(username).isEmpty()) {
-//            return "empty";
-//        }
-//        return "not empty";
-//    }
+    @GetMapping("/user/list/all")
+    public Iterable<User> listAllUsers() {
+        return userService.listUsers();
+    }
 }

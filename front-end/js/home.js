@@ -1,26 +1,3 @@
-// =========== USER LOOKUP ==============
-function userLookUp(userId, authorPostId) {
-  const author = document.querySelector((`[authorPostId ="${authorPostId}"]`));
-  fetch('http://localhost:8181/user/list/all', {
-    method: 'GET',
-    headers: {
-      'Authorization' : 'Bearer ' + localStorage.getItem('user'),
-      'Content-Type' : 'application/json'
-    }
-  })
-  .then((res) => {
-    return res.json()
-  })
-  .then((res) => {
-    // manipulate the dom here;
-    for (i = 0; i<res.length; i++) {
-      if (res[i].id == userId) {
-        author.innerText = 'Posted by: ' + res[i].username;
-      }
-    }
-  })
-}
-
 // =========== SEE ALL POSTS ==================
 const getAllPosts = function() {
   const postsContainer = document.querySelector('.posts');
@@ -50,7 +27,7 @@ const getAllPosts = function() {
       const body = document.createElement('p');
       body.innerText = response[i].body;
       const author = document.createElement('h3');
-      author.setAttribute('authorPostId', response[i].id);
+      author.innerText = "Posted by: " + response[i].user.username;
 
 
       const createComment = document.createElement('div');
@@ -79,7 +56,10 @@ const getAllPosts = function() {
         for (let j = 0; j<response[i].comments.length; j++) {
           const commentsBox = document.createElement('div');
           commentsBox.classList = "postsComments";
-          commentsBox.innerText = response[i].comments[j].body;
+          commentsBox.setAttribute("commentUserId", response[i].id);
+          if (response[i].comments[j].body) {
+            commentsBox.innerText = `[${response[i].comments[j].user.username}] : ${response[i].comments[j].body}`;
+          }
           newPost.appendChild(commentsBox);
         }
       }
@@ -105,13 +85,6 @@ const getAllPosts = function() {
 
       commentArea.append(triangle, commentBox, submitPostComment);
       postsContainer.append(newPost, commentArea);
-
-      if (response[i].user.id) {
-        userLookUp(response[i].user.id, response[i].id);
-      } else {
-        userLookUp(response[i].user, response[i].id);
-      }
-
     }
   })
   .catch((err) => {
@@ -381,7 +354,6 @@ const listUserPosts = function() {
     console.log(err);
   })
 }
-// =========== SEE USER COMMENTS =================
 
 // =========== MAKE COMMENT =================
 

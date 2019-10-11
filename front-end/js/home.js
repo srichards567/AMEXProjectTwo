@@ -1,5 +1,4 @@
 // =========== SEE ALL POSTS ==================
-//
 const getAllPosts = function() {
   const postsContainer = document.querySelector('.posts');
   fetch('http://localhost:8181/post/list/all', {
@@ -19,9 +18,22 @@ const getAllPosts = function() {
       if (response[i].user.username == localStorage.getItem('username')) {
         localStorage.setItem('userId', response[i].user.id);
       }
+
       const newPost = document.createElement('div');
       newPost.classList = 'allPosts';
       newPost.setAttribute('postid', response[i].id);
+
+
+      const title = document.createElement('h2');
+      title.innerText = response[i].title;
+
+      const body = document.createElement('p');
+      body.innerText = response[i].body;
+
+      const createComment = document.createElement('div');
+      createComment.classList = "createCommentBtn";
+      createComment.addEventListener("click", showMakeComment);
+
 
       if (response[i].user.id == localStorage.getItem('userId')
     || response[i].user == localStorage.getItem('userId')) {
@@ -35,14 +47,25 @@ const getAllPosts = function() {
       newPost.append(deleteBtn);
       }
 
+      newPost.appendChild(createComment);
 
-      const title = document.createElement('h2');
-      title.innerText = response[i].title;
       newPost.appendChild(title);
-      const body = document.createElement('p');
-      body.innerText = response[i].body;
       newPost.appendChild(body);
-      postsContainer.appendChild(newPost);
+
+      if (response[i].comments.length) {
+        for (let j = 0; j<response[i].comments.length; j++) {
+          const commentsBox = document.createElement('div');
+          commentsBox.classList = "postsComments";
+          commentsBox.innerText = response[i].comments[j].body;
+          newPost.appendChild(commentsBox);
+        }
+      }
+
+      const commentBox = document.createElement('textarea');
+      const triangle = document.createElement('div');
+      commentBox.classList = "makeComment";
+      triangle.classList = "triangle";
+      postsContainer.append(newPost,triangle,commentBox);
     }
   })
   .catch((err) => {
@@ -165,6 +188,10 @@ function eraseText() {
   document.querySelector('.makePostTitle').value = "";
   document.querySelector('.makePostBody').value = "";
 }
+
+function showMakeComment() {
+
+}
 // =========== MANIPULATE DOM WITH PROMISE VALUES ==================
 function manipulateDom(htmlElementId, res) {
   const targetElement = document.getElementById(htmlElementId);
@@ -256,4 +283,3 @@ function makeUserPost() {
 }
 // =========== UPDATE A PROFILE ==================
 // =========== SEE USER POSTS ====================
-// =========== SEE USER COMMENTS =================

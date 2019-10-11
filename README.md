@@ -13,8 +13,15 @@ Samantha Richards (<a href="https://github.com/srichards567">@srichards567</a>)
 # General Approach
 
 
-# Unsolved Problems
+# Unsolved Problems and Major Hurdles
+- Some of our major hurdles were:<br/>
+- Setting up authorization so that only the user who created a post can delete it.<br/>
+- Receiving data that requires authorization through fetch requests.<br/>
+- Changing how user info displays in Postman.<br/>
 
+- Our unsolved problems were:<br/>
+- Updating a user profile without rewriting previous data.<br/>
+ 
 # Planning
 <img src = "images/erd-v4.png" width="500"/><br/>
 Six models are persisted to a PostgreSQL database.<br/>
@@ -29,3 +36,9 @@ Link to Trello Board: https://trello.com/b/AlYHVCIu/project-2
 # Installation Instructions
 
 # User Stories
+1. As Paul, I want to make an account on Tea Room so I can be a member of the online community. 
+2. As a psych major, I want to read users' opinions on the latest topics so I can get inspiration for my research.
+3. As Sally, I want to create a comment in response to a post so I can get clarification on what the author meant.
+4. As a job seeker I want to delete a post so that my potential employer does not see my NSFW posts.
+
+

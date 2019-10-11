@@ -26,15 +26,20 @@ const getAllPosts = function() {
       title.innerText = response[i].title;
       const body = document.createElement('p');
       body.innerText = response[i].body;
+      const author = document.createElement('h3');
+      author.innerText = "Posted by: " + response[i].user.username;
 
       const name = document.createElement('h3');
       name.innerText = response[i].user.id;
       response[i].user.id = response[i].user.username;
 
-      // const userId_obj_to_map = (obj => {
-      //   const userMap = new Map;
-      //   Object.keys(obj).forEach(k => {userMap.set(k, obj[k])}
-      // });
+      const createComment = document.createElement('div');
+      createComment.classList = "createCommentBtn";
+      createComment.addEventListener("click", function(event) {
+        event.preventDefault();
+        showMakeComment(event);
+      });
+
 
       if (response[i].user.id == localStorage.getItem('userId')
     || response[i].user == localStorage.getItem('userId')) {
@@ -48,16 +53,16 @@ const getAllPosts = function() {
       newPost.append(deleteBtn);
       }
 
-      // newPost.appendChild(createComment);
-
-      newPost.appendChild(title);
-      newPost.appendChild(body);
+      newPost.append(createComment, title, author, body);
 
       if (response[i].comments.length) {
         for (let j = 0; j<response[i].comments.length; j++) {
           const commentsBox = document.createElement('div');
           commentsBox.classList = "postsComments";
-          commentsBox.innerText = response[i].comments[j].body;
+          commentsBox.setAttribute("commentUserId", response[i].id);
+          if (response[i].comments[j].body) {
+            commentsBox.innerText = `[${response[i].comments[j].user.username}] : ${response[i].comments[j].body}`;
+          }
           newPost.appendChild(commentsBox);
         }
       }
@@ -65,7 +70,7 @@ const getAllPosts = function() {
 
       const commentArea = document.createElement('div');
       commentArea.classList.add('commentHere');
-      commentArea.classList.add(response[i].id);
+      commentArea.setAttribute("postCommentId", response[i].id);
 
       const commentBox = document.createElement('textarea');
       const triangle = document.createElement('div');
@@ -75,10 +80,14 @@ const getAllPosts = function() {
       const submitPostComment = document.createElement('button');
       submitPostComment.classList = "submitComment";
       submitPostComment.innerText = "Comment!";
+      submitPostComment.addEventListener("click", function(event) {
+        event.preventDefault();
+        requestPostComment(event);
+      });
       triangle.classList = "triangle";
 
-      commentArea.append(commentBox, submitPostComment);
-      postsContainer.append(newPost,triangle,commentArea);
+      commentArea.append(triangle, commentBox, submitPostComment);
+      postsContainer.append(newPost, commentArea);
     }
   })
   .catch((err) => {
@@ -214,8 +223,13 @@ function eraseText() {
   document.querySelector('.makePostBody').value = "";
 }
 
-function showMakeComment() {
-
+function showMakeComment(event) {
+  const commentBoxId = event.target.parentNode.getAttribute('postid');
+  // document.querySelector((`[commentBoxId="${postId}"]`)).innerHTML="";
+  document.querySelector((`[postid="${commentBoxId}"]`)).style.width = "500px";
+  document.querySelector((`[postcommentid ="${commentBoxId}"]`)).style.display="inline-block"
+  // document.querySelector(`.makeComment ${commentBoxId}`).style.display = 'inline-block';
+  document.querySelector('.triangle').style.display = 'inline-block';
 }
 // =========== MANIPULATE DOM WITH PROMISE VALUES ==================
 function manipulateDom(htmlElementId, res) {
@@ -376,4 +390,29 @@ const listUserPosts = function() {
     console.log(err);
   })
 }
-// =========== SEE USER COMMENTS =================
+
+
+// =========== MAKE COMMENT =================
+
+function requestPostComment(event) {
+  const postId = event.target.parentNode.getAttribute('postCommentId');
+  const postComment = event.target.parentNode.children[1].value;
+
+  fetch(`http://localhost:8181/comment/${postId}`, {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer ' + localStorage.getItem('user'),
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      body: postComment
+    })
+  })
+  .then((res) => {
+    getAllPosts();
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+}
+

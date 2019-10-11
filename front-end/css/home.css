@@ -97,7 +97,7 @@ button:hover {
 
 .allPosts, .userPosts, .userComments {
   position: static;
-  width: 500px;
+  width: 750px;
   height: 150px;
   border-radius: 5px;
   background: white;
@@ -163,45 +163,37 @@ i {
 }
 
 .commentHere {
-    grid-column: 3;
+    /* display: inline-block; */
+    display: none;
 }
 
 .makeComment {
-  width:  220px;
-  height: 100px;
+  width:  200px;
+  height: 70px;
   background: white;
   border-radius: 20px;
   border: none;
   font-size: 16px;
-  /* display: none; */
-}
-
-
-.posts {
-  display: grid;
-  grid-template-columns: 2fr 0.5fr 0.7fr;
 }
 
 .allPosts, .userPosts, .userComments {
   margin-left: 20px;
-  grid-column: 1;
   color: black;
+  display: inline-block;
 }
 
 .triangle {
-  /* display: none; */
-  margin-top: 40px;
-  padding-left: 20px;
-  width: 0;
-  height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
   border-right:10px solid white;
-
+  margin-bottom: 20px;
+  display: inline-block;
+  /* margin-bottom: 70px; */
 }
 
 .submitComment {
-  width: 100%;
+  width: 90%;
+  display: block;
 }
 
 .userProfile {
@@ -209,3 +201,4 @@ i {
   background-color: rgba(80, 84, 81,0.5);
   border-radius: 5px;
 }
+

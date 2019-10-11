@@ -2,7 +2,7 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #a5bbd9;
-  background: url("../images/alice-in-wonderland2.jpg");
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("../images/alice-in-wonderland2.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -32,10 +32,10 @@ header {
 }
 
 .inputFields {
-  background: rgba(0,0,0,0.1);
+  /* background: rgba(0,0,0,0.1); */
   padding: 2rem;
-  border: 5px solid rgba(0,0,0,0.1);
-  border-radius: 10px;
+  /* border: 5px solid rgba(0,0,0,0.1); */
+  /* border-radius: 10px; */
   display: flex;
   margin: auto;
   margin-top: 10%;
@@ -70,7 +70,7 @@ input {
 
 
 input::placeholder {
-  color:  gray;
+  color:  slategray;
 }
 
 input:focus {

@@ -56,9 +56,18 @@ const getAllPosts = function() {
         for (let j = 0; j<response[i].comments.length; j++) {
           const commentsBox = document.createElement('div');
           commentsBox.classList = "postsComments";
-          commentsBox.setAttribute("commentUserId", response[i].id);
+          commentsBox.setAttribute("commentId", response[i].comments[j].id);
           if (response[i].comments[j].body) {
             commentsBox.innerText = `[${response[i].comments[j].user.username}] : ${response[i].comments[j].body}`;
+          }
+          if (response[i].comments[j].user.username==localStorage.getItem('username')) {
+            const deleteBtn = document.createElement('i');
+            deleteBtn.classList = "commentDelete fa fa-times";
+            deleteBtn.addEventListener('click', function(event) {
+              event.preventDefault();
+              requestDeleteComment(event);
+            });
+            commentsBox.appendChild(deleteBtn);
           }
           newPost.appendChild(commentsBox);
         }
@@ -372,6 +381,26 @@ function requestPostComment(event) {
     })
   })
   .then((res) => {
+    getAllPosts();
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+}
+
+// =========== DELETE A COMMENT =================
+function requestDeleteComment(event) {
+  const commentIdToDelete = event.target.parentNode.getAttribute('commentid');
+
+  fetch(`http://localhost:8181/comment/${commentIdToDelete}`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization': 'Bearer ' + localStorage.getItem('user'),
+      'Content-Type': 'application/json'
+    }
+  })
+  .then((res) => {
+    alert('Your comment has been deleted!');
     getAllPosts();
   })
   .catch((err) => {

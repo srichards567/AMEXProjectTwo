@@ -203,3 +203,7 @@ i {
  background-color: rgba(80, 84, 81,0.5);
  border-radius: 5px;
 }
+
+.commentDelete {
+  margin-right: 400px;
+}

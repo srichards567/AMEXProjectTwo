@@ -22,6 +22,10 @@ const getAllPosts = function() {
       const newPost = document.createElement('div');
       newPost.classList = 'allPosts';
       newPost.setAttribute('postid', response[i].id);
+      const title = document.createElement('h2');
+      title.innerText = response[i].title;
+      const body = document.createElement('p');
+      body.innerText = response[i].body;
 
       if (response[i].user.id == localStorage.getItem('userId')
     || response[i].user == localStorage.getItem('userId')) {
@@ -34,14 +38,19 @@ const getAllPosts = function() {
           })
       newPost.append(deleteBtn);
       }
-
-
-      const title = document.createElement('h2');
-      title.innerText = response[i].title;
       newPost.appendChild(title);
-      const body = document.createElement('p');
-      body.innerText = response[i].body;
       newPost.appendChild(body);
+
+
+      if (response[i].comments.length) {
+        for(j = 0; j < response[i].comments.length; j++) {
+          const commentsBox = document.createElement('div');
+          commentsBox.innerText = response[i].comments[j].body;
+
+          newPost.appendChild(commentsBox);
+        }
+      }
+
       postsContainer.appendChild(newPost);
     }
   })
@@ -93,27 +102,38 @@ function deleteComment() {
 
 // =========== LIST MY COMMENTS ==================
 
-const makeCall1 = function() {
-fetch(`http://localhost:8181/comment/list`)
+const listUserComments = function() {
+  const commentsContainer = document.querySelector('.posts')
+fetch(`http://localhost:8181/comment/list`, {
+  headers: {
+    'Authorization': 'Bearer ' + localStorage.getItem('user'),
+    'Content-Type': 'application/json'
+  }
+})
   .then((response) => {
     return response.json();
   })
   .then((response) => {
-    const list = document.querySelector('.userComments')
-    for (let i = 0; i < response.length; i ++) {
-      const body = document.createElement('p');
+    commentsContainer.innerHTML = "";
+    for(let i = 0; i < response.length; i ++) {
 
-      document.querySelector('.userComments').appendChild(body);
-    }
+      const newComment = document.createElement('div');
+      newComment.classList = 'userComments';
+      newComment.setAttribute('commentid', response[i].id);
+
+      const body = document.createElement('ul');
+      body.innerText = response[i].body;
+
+        newComment.appendChild(body);
+        commentsContainer.appendChild(newComment);
+
+      }
   })
   .catch((err) => {
     console.log(err);
   })
 }
 
-const getData1 = function(data) {
-  const body = data.commentBody;
-}
 
 // =========== DOM MANIPULATION ==================
 
@@ -256,4 +276,39 @@ function makeUserPost() {
 }
 // =========== UPDATE A PROFILE ==================
 // =========== SEE USER POSTS ====================
+const listUserPosts = function() {
+  const userPostsContainer = document.querySelector('.posts')
+  fetch('http://localhost:8181/post/list', {
+    headers: {
+      'Authorization': 'Bearer ' + localStorage.getItem('user'),
+      'Content-Type': 'application/json'
+    }
+  })
+  .then((response) => {
+    return response.json();
+  })
+  .then((response) => {
+    userPostsContainer.innerHTML = "";
+    for(let i = 0; i < response.length; i ++) {
+
+      const userPost = document.createElement('div');
+      userPost.classList = 'userPosts';
+      userPost.setAttribute('postId', response[i].id);
+
+      const postTitle = document.createElement('h2');
+      postTitle.innerText = response[i].title;
+
+      const postBody = document.createElement('p');
+      postBody.innerText = response[i].body;
+
+      userPost.appendChild(postTitle);
+      userPost.appendChild(postBody);
+
+      userPostsContainer.appendChild(userPost);
+    }
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+}
 // =========== SEE USER COMMENTS =================

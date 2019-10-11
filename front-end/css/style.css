@@ -31,9 +31,6 @@ header>h1 {
     text-shadow: 5px 5px black;
 }
 
-h1:hover {
-  color: #eb7434;
-}
 .navbar a {
     text-decoration: none !important;
     color: white;
@@ -41,5 +38,6 @@ h1:hover {
 }
 
 .navbar a:hover {
-  color: #eb7434;
+  text-decoration: underline;
+  color: #9db0bd;
 }

@@ -1,4 +1,5 @@
-# AMEXProjectTwo
+# Tea Room 
+(aka AMEXProjecTwo)
 
 # Team Members
 Christine Le (<a href="https://github.com/le-christine">@le-christine</a>)<br/>
@@ -12,7 +13,7 @@ Samantha Richards (<a href="https://github.com/srichards567">@srichards567</a>)
 
 # General Approach
 We started by designing an ERD diagram (see below). We used this model to implement the database. We started with the Models because we knew what we wanted each table to hold. User and UserProfile were first to be implemented because these tables were related one-to-one. When we made the Post model we added Security Implementation to ensure only authenticated users (with a token) could have access to the posts endpoints. We tracked our progress with Trello and marked completions daily to ensure we were on track. We frequently tested the endpoints with Postman, and with every data table modification we went into Postgres to see those reflected changes. Finally, we connected to this API from our website, Tea Room. Users are able to sign up and log in, write posts, and comments. They can also delete their own posts and comments. <br/>
-
+<img src = "images/trello.png"/>
 
 # Unsolved Problems and Major Hurdles
 Some of our major hurdles were:<br/>
@@ -34,7 +35,6 @@ The `comment` model has the fields id, body, post_id, and user_id. This model ma
 
 We used Trello to break down the project and set tasks for ourselves on a daily basis.<br/>
 Link to Trello Board: https://trello.com/b/AlYHVCIu/project-2
-# Installation Instructions
 
 # User Stories
 1. As Paul, I want to make an account on Tea Room so I can be a member of the online community. 

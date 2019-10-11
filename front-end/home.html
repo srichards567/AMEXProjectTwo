@@ -44,8 +44,15 @@
         </div>
 
         <div class="userProfile">
-          <button type="submit" class="updateMyProfileBtn">Update Profile</button><br/>
+          <button type="submit" class="updateMyProfileBtn" onclick="showUpdateUserProfile()">Update Profile</button><br/>
+          <div class="updateUserProfile" style="display:none">
+                      Mobile: <input class="updateProfileMobile" type="text"></input><br/>
+                      Address: <input class="udpateProfileAddress" type="text"></input><br/>
+                      Second Email: <input class="updateProfileEmail" type="text"></input></br>
+                      <button id="submitUpdate" onclick="updateProfile()">Submit</button>
+                    </div>
         </div>
+
       </div>
     </div>
     <!---

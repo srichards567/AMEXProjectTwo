@@ -27,17 +27,14 @@ const getAllPosts = function() {
       const body = document.createElement('p');
       body.innerText = response[i].body;
 
+      const name = document.createElement('h3');
+      name.innerText = response[i].user.id;
+      response[i].user.id = response[i].user.username;
 
-      const title = document.createElement('h2');
-      title.innerText = response[i].title;
-
-      const body = document.createElement('p');
-      body.innerText = response[i].body;
-
-      const createComment = document.createElement('div');
-      createComment.classList = "createCommentBtn";
-      createComment.addEventListener("click", showMakeComment);
-
+      // const userId_obj_to_map = (obj => {
+      //   const userMap = new Map;
+      //   Object.keys(obj).forEach(k => {userMap.set(k, obj[k])}
+      // });
 
       if (response[i].user.id == localStorage.getItem('userId')
     || response[i].user == localStorage.getItem('userId')) {
@@ -51,7 +48,7 @@ const getAllPosts = function() {
       newPost.append(deleteBtn);
       }
 
-      newPost.appendChild(createComment);
+      // newPost.appendChild(createComment);
 
       newPost.appendChild(title);
       newPost.appendChild(body);
@@ -211,6 +208,7 @@ function showUserProfile() {
   document.querySelector('.userProfile').style.display="inline";
 }
 
+
 function eraseText() {
   document.querySelector('.makePostTitle').value = "";
   document.querySelector('.makePostBody').value = "";
@@ -309,6 +307,38 @@ function makeUserPost() {
   })
 }
 // =========== UPDATE A PROFILE ==================
+// const updateProfile = function() {
+//   const submitUpdatedProfile = document.getElementById('.submitUpdate')
+//
+//   // const newMobile = document.querySelector('userMobile');
+//   // const newAddress = document.querySelector('userAddress');
+//   // const newAltEmail = document.querySelector('userAltEmail');
+//
+//   fetch('http://localhost:8181/profile', {
+//     method: 'PUT',
+//     headers: {
+//       'Authorization': 'Bearer ' + localStorage.getItem('user'),
+//       'Content-Type': 'application/json'
+//     },
+//     body:JSON.stringify({
+//       mobile: newMobile,
+//       address: newAddress,
+//       altEmail: newAltEmail
+//     })
+//   })
+//   .then((response) => {
+//     return response.json();
+//   })
+//   .then((response) => {
+//     console.log("updated profile");
+//     // newMobile.innerText = "Mobile: " + response.mobile;
+//     // newAddress.innerText = "Address: " + response.address;
+//     // newAltEmail = "Alt Email: " + response.altEmail;
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   })
+// }
 // =========== SEE USER POSTS ====================
 
 const listUserPosts = function() {
@@ -327,7 +357,7 @@ const listUserPosts = function() {
     for(let i = 0; i < response.length; i ++) {
 
       const userPost = document.createElement('div');
-      userPost.classList = 'userPosts';
+      userPost.classList = 'allPosts';
       userPost.setAttribute('postId', response[i].id);
 
       const postTitle = document.createElement('h2');
@@ -347,4 +377,3 @@ const listUserPosts = function() {
   })
 }
 // =========== SEE USER COMMENTS =================
-

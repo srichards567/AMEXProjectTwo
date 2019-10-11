@@ -92,6 +92,10 @@ input:not(:focus) {
   color:  black;
 }
 
+.submitbtn:hover {
+    color: #515254;
+}
+
 h3 {
   color: white;
   font-family: 'Montserrat', sans-serif;

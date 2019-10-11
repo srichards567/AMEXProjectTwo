@@ -21,6 +21,7 @@ function removeUserInfo() {
   if (confirm("Are you sure you want to log out?")) {
     localStorage.removeItem('user');
     localStorage.removeItem('username');
+    localStorage.removeItem('userId');
     window.location.href = "index.html";
   }
 }

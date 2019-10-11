@@ -5,7 +5,7 @@
   <link rel="stylesheet" href="css/home.css">
   <title>Tea Room -Home Page</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat|Sacramento|Satisfy&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400|700|Sacramento|Satisfy&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Latest compiled and minified CSS -->
   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> -->
@@ -44,7 +44,14 @@
         </div>
 
         <div class="userProfile">
-          <button type="submit" class="updateMyProfileBtn">Update Profile</button><br/>
+          <button type="submit" class="updateMyProfileBtn" onclick="showUpdateUserProfile()">Update Profile</button><br/>
+
+          <div class="updateUserProfile" style="display:none">
+            Mobile: <input class="updateProfileMobile" type="text"></input><br/>
+            Address: <input class="udpateProfileAddress" type="text"></input><br/>
+            Second Email: <input class="updateProfileEmail" type="text"></input></br>
+          </div>
+
         </div>
       </div>
     </div>

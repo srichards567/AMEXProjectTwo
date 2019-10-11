@@ -198,8 +198,8 @@ i {
 }
 
 
-/** GRID STYLING FOR COMMENTS AND POSTS
-BEFORE AND AFTER THE COMMENT BUTTON IS CLICKED **/
-/* .fullGridRow {
-  grid-column: 1/span 3;
-} */
+.userProfile {
+ border: 5px solid rgb(80, 84, 81);
+ background-color: rgba(80, 84, 81,0.5);
+ border-radius: 5px;
+}

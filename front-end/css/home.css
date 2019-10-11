@@ -2,11 +2,8 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #a5bbd9;
+  color: #fffaf1;
   font-family: 'Montserrat', sans-serif;
-  /* background-image: url("../images/transparent-lace.png");
-  background-repeat: repeat-y;
-  background-position: left;
-  background-size: 350px 400px; */
   background-image: url("../images/teacup-vintage.jpg");
 }
 
@@ -33,6 +30,7 @@ header {
 
 a:hover, button:hover {
   color: #f5dd9a;
+}
 
 .postsDiv {
   width: 800px;
@@ -98,6 +96,7 @@ button:hover {
 }
 
 .allPosts, .userPosts, .userComments {
+  position: static;
   width: 500px;
   height: 150px;
   border-radius: 5px;
@@ -105,8 +104,12 @@ button:hover {
   margin: 0 auto;
   margin-bottom: 10px;
   box-shadow: 8px 7px #adaca8;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 1;
   /* margin-bottom: 10px; */
 }
+
 
 button {
   color: #6e6d6d;
@@ -148,4 +151,58 @@ button {
 i {
   float: right;
   width: 20px;
+}
+
+
+.createCommentBtn {
+  background-image: url("../images/comment-icon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  float: right;
+  padding-right: 10px;
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+}
+
+.commentHere {
+    grid-column: 3;
+}
+
+.makeComment {
+  width:  220px;
+  height: 100px;
+  background: white;
+  border-radius: 20px;
+  border: none;
+  font-size: 16px;
+  /* display: none; */
+}
+
+
+.posts {
+  display: grid;
+  grid-template-columns: 2fr 0.5fr 0.7fr;
+}
+
+.allPosts {
+  margin-left: 20px;
+  grid-column: 1;
+  color: black;
+}
+
+.triangle {
+  /* display: none; */
+  margin-top: 40px;
+  padding-left: 20px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right:10px solid white;
+
+}
+
+.submitComment {
+  width: 100%;
 }

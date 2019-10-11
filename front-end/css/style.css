@@ -25,7 +25,7 @@ header>h1 {
     font-family: Sacramento, sans-serif;
     font-size: 10rem;
     text-align: center;
-    color: white;
+    color: #f5f2d0;
     justify-content: center;
     padding-top: 10%;
     text-shadow: 5px 5px black;
@@ -34,9 +34,10 @@ header>h1 {
 h1:hover {
   color: #eb7434;
 }
+
 .navbar a {
     text-decoration: none !important;
-    color: white;
+      color: #f5f2d0;
     text-shadow: 1px 1px black;
 }
 

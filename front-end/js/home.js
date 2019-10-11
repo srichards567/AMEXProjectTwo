@@ -357,8 +357,8 @@ const listUserPosts = function() {
 // =========== MAKE COMMENT =================
 
 function requestPostComment(event) {
-  const postId = event.target.parentNode.classList[1];
-  const postComment = event.target.parentNode.children[0].value;
+  const postId = event.target.parentNode.getAttribute('postCommentId');
+  const postComment = event.target.parentNode.children[1].value;
 
   fetch(`http://localhost:8181/comment/${postId}`, {
     method: 'POST',

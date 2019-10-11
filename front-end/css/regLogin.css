@@ -2,6 +2,9 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #a5bbd9;
+  background: url("../images/alice-in-wonderland2.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .navbar {

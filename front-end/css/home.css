@@ -2,6 +2,7 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #a5bbd9;
+  color: #fffaf1;
   font-family: 'Montserrat', sans-serif;
   background-image: url("../images/teacup-vintage.jpg");
 }
@@ -164,8 +165,11 @@ i {
   overflow: hidden;
 }
 
+.commentHere {
+    grid-column: 3;
+}
+
 .makeComment {
-  grid-column: 3;
   width:  220px;
   height: 100px;
   background: white;
@@ -184,6 +188,7 @@ i {
 .allPosts {
   margin-left: 20px;
   grid-column: 1;
+  color: black;
 }
 
 .triangle {
@@ -196,4 +201,8 @@ i {
   border-bottom: 10px solid transparent;
   border-right:10px solid white;
 
+}
+
+.submitComment {
+  width: 100%;
 }

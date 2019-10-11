@@ -61,11 +61,22 @@ const getAllPosts = function() {
         }
       }
 
+      const commentArea = document.createElement('div');
+      commentArea.classList.add('commentHere');
+      commentArea.classList.add(response[i].id);
+
       const commentBox = document.createElement('textarea');
       const triangle = document.createElement('div');
-      commentBox.classList = "makeComment";
+
+      commentBox.classList.add("makeComment");
+
+      const submitPostComment = document.createElement('button');
+      submitPostComment.classList = "submitComment";
+      submitPostComment.innerText = "Comment!";
       triangle.classList = "triangle";
-      postsContainer.append(newPost,triangle,commentBox);
+
+      commentArea.append(commentBox, submitPostComment);
+      postsContainer.append(newPost,triangle,commentArea);
     }
   })
   .catch((err) => {

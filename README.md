@@ -29,3 +29,9 @@ Link to Trello Board: https://trello.com/b/AlYHVCIu/project-2
 # Installation Instructions
 
 # User Stories
+1. As Paul, I want to make an account on Tea Room so I can be a member of the online community. 
+2. As a psych major, I want to read users' opinions on the latest topics so I can get inspiration for my research.
+3. As Sally, I want to create a comment in response to a post so I can get clarification on what the author meant.
+4. As a job seeker I want to delete a post so that my potential employer does not see my NSFW posts.
+
+

@@ -14,12 +14,12 @@ Samantha Richards (<a href="https://github.com/srichards567">@srichards567</a>)
 
 
 # Unsolved Problems and Major Hurdles
-- Some of our major hurdles were:<br/>
+Some of our major hurdles were:<br/>
 - Setting up authorization so that only the user who created a post can delete it.<br/>
 - Receiving data that requires authorization through fetch requests.<br/>
 - Changing how user info displays in Postman.<br/>
 
-- Our unsolved problems were:<br/>
+Our unsolved problems were:<br/>
 - Updating a user profile without rewriting previous data.<br/>
  
 # Planning

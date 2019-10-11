@@ -1,5 +1,5 @@
 # Tea Room 
-(aka AMEXProjecTwo)
+(aka AMEXProjectTwo)
 
 # Team Members
 Christine Le (<a href="https://github.com/le-christine">@le-christine</a>)<br/>
@@ -10,6 +10,21 @@ Samantha Richards (<a href="https://github.com/srichards567">@srichards567</a>)
 - Springboot
 - Java
 - HTML/CSS/JavaScript
+
+# Installation 
+
+## Clone
+- Clone this repo to your local machine using `https://github.com/srichards567/AMEXProjectTwo.git`
+
+## Postgres
+- Install PostgreSQL to your local machine using homebrew:
+
+```shell
+$ brew update
+$ brew install postgresql
+```
+
+
 
 # General Approach
 We started by designing an ERD diagram (see below). We used this model to implement the database. We started with the Models because we knew what we wanted each table to hold. User and UserProfile were first to be implemented because these tables were related one-to-one. When we made the Post model we added Security Implementation to ensure only authenticated users (with a token) could have access to the posts endpoints. We tracked our progress with Trello and marked completions daily to ensure we were on track. We frequently tested the endpoints with Postman, and with every data table modification we went into Postgres to see those reflected changes. Finally, we connected to this API from our website, Tea Room. Users are able to sign up and log in, write posts, and comments. They can also delete their own posts and comments. <br/>

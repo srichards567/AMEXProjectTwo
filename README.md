@@ -35,7 +35,6 @@ The `comment` model has the fields id, body, post_id, and user_id. This model ma
 
 We used Trello to break down the project and set tasks for ourselves on a daily basis.<br/>
 Link to Trello Board: https://trello.com/b/AlYHVCIu/project-2
-# Installation Instructions
 
 # User Stories
 1. As Paul, I want to make an account on Tea Room so I can be a member of the online community. 

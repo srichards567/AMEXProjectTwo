@@ -56,6 +56,7 @@ public class UserController {
     }
 
     // create a user profile
+    @PutMapping("/profile")
     @PostMapping("/profile")
     public UserProfile createUserProfile(@RequestBody UserProfile newUserProfile) {
         return userProfileService.createUserProfile(newUserProfile);

@@ -30,7 +30,10 @@ const getAllPosts = function() {
 
       const createComment = document.createElement('div');
       createComment.classList = "createCommentBtn";
-      createComment.addEventListener("click", showMakeComment);
+      createComment.addEventListener("click", function(event) {
+        event.preventDefault();
+        showMakeComment(event);
+      });
 
 
       if (response[i].user.id == localStorage.getItem('userId')
@@ -62,7 +65,7 @@ const getAllPosts = function() {
 
       const commentArea = document.createElement('div');
       commentArea.classList.add('commentHere');
-      commentArea.classList.add(response[i].id);
+      commentArea.setAttribute("postCommentId", response[i].id);
 
       const commentBox = document.createElement('textarea');
       const triangle = document.createElement('div');
@@ -78,8 +81,8 @@ const getAllPosts = function() {
       });
       triangle.classList = "triangle";
 
-      commentArea.append(commentBox, submitPostComment);
-      postsContainer.append(newPost,triangle,commentArea);
+      commentArea.append(triangle, commentBox, submitPostComment);
+      postsContainer.append(newPost, commentArea);
     }
   })
   .catch((err) => {
@@ -214,8 +217,13 @@ function eraseText() {
   document.querySelector('.makePostBody').value = "";
 }
 
-function showMakeComment() {
-
+function showMakeComment(event) {
+  const commentBoxId = event.target.parentNode.getAttribute('postid');
+  // document.querySelector((`[commentBoxId="${postId}"]`)).innerHTML="";
+  document.querySelector((`[postid="${commentBoxId}"]`)).style.width = "500px";
+  document.querySelector((`[postcommentid ="${commentBoxId}"]`)).style.display="inline-block"
+  // document.querySelector(`.makeComment ${commentBoxId}`).style.display = 'inline-block';
+  document.querySelector('.triangle').style.display = 'inline-block';
 }
 // =========== MANIPULATE DOM WITH PROMISE VALUES ==================
 function manipulateDom(htmlElementId, res) {

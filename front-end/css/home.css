@@ -141,9 +141,9 @@ button {
   display: none;
 }
 
-.viewProfileBtn{
+/* .viewProfileBtn{
   display: none;
-}
+} */
 
 i {
   float: right;
@@ -182,7 +182,7 @@ i {
   grid-template-columns: 2fr 0.5fr 0.7fr;
 }
 
-.allPosts {
+.allPosts, .userPosts, .userComments {
   margin-left: 20px;
   grid-column: 1;
   color: black;

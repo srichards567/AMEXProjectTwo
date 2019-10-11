@@ -28,12 +28,6 @@ const getAllPosts = function() {
       body.innerText = response[i].body;
 
 
-      const title = document.createElement('h2');
-      title.innerText = response[i].title;
-
-      const body = document.createElement('p');
-      body.innerText = response[i].body;
-
       const createComment = document.createElement('div');
       createComment.classList = "createCommentBtn";
       createComment.addEventListener("click", showMakeComment);
@@ -78,6 +72,10 @@ const getAllPosts = function() {
       const submitPostComment = document.createElement('button');
       submitPostComment.classList = "submitComment";
       submitPostComment.innerText = "Comment!";
+      submitPostComment.addEventListener("click", function(event) {
+        event.preventDefault();
+        requestPostComment(event);
+      });
       triangle.classList = "triangle";
 
       commentArea.append(commentBox, submitPostComment);
@@ -348,3 +346,26 @@ const listUserPosts = function() {
 }
 // =========== SEE USER COMMENTS =================
 
+// =========== MAKE COMMENT =================
+
+function requestPostComment(event) {
+  const postId = event.target.parentNode.classList[1];
+  const postComment = event.target.parentNode.children[0].value;
+
+  fetch(`http://localhost:8181/comment/${postId}`, {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer ' + localStorage.getItem('user'),
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      body: postComment
+    })
+  })
+  .then((res) => {
+    getAllPosts();
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+}

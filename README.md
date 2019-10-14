@@ -40,7 +40,8 @@ Our unsolved problems were:<br/>
 - Updating a user profile without rewriting previous data.<br/>
  
 # Planning
-<img src = "images/erd-v4.png" width="500"/><br/>
+<img src = "images/erd-v4.png" width="500"/><br/><br/>
+<img src = "images/endpoints-brainstorm.jpg" width="500"/><br/><br/>
 Six models are persisted to a PostgreSQL database.<br/>
 The `user` model has the fields: id, username, password, email, and user_profile_id.<br/>
 The `user_profile` model has the fields: id, mobile, address, and altEmail. <br/>

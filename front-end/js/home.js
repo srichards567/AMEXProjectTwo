@@ -279,7 +279,7 @@ function getUserProfile() {
     }
   })
   .then((res) => {
-    return(res.json());
+    return res.json();
   })
   .then((res) => {
     const userAltEmail = document.createElement('p');

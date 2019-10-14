@@ -65,7 +65,7 @@ function userSignup() {
       localStorage.setItem('user', res.token);
       if (res.token) { // DO I GET A RESPONSE? IF YES:
           console.log(localStorage.getItem('user'));
-          window.location.href = "index.html";
+          window.location.href = "home.html";
       }
   })
   .catch((error) => {
